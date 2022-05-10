@@ -51,8 +51,8 @@ public class Values extends ValuesBase {
             "EM.apk",
             "EMDataserver.jar",
             "romanow.abc.desktop.module",
-            "/drawable/EMmin.png",
-            "Опоры России"
+            "/drawable/lecture.png",
+            "БРС-НГТУ-ВТ"
             };
     private void initEnvTwo(){
         I_Environment env = new I_Environment() {
@@ -84,11 +84,21 @@ public class Values extends ValuesBase {
         setEnv(env);
         EntityIndexedFactory EntityFactory = getEntityFactory();
         EntityFactory.put(new TableItem("Настройки", WorkSettings.class));
+        EntityFactory.put(new TableItem("Ответ", EMAnswer.class));
+        EntityFactory.put(new TableItem("Предмет", EMDiscipline.class));
+        EntityFactory.put(new TableItem("Экзамен", EMExam.class));
+        EntityFactory.put(new TableItem("Регламент", EMExamRule.class));
+        EntityFactory.put(new TableItem("Прием экзамена", EMExamTaking.class));
+        EntityFactory.put(new TableItem("Группа", EMGroup.class));
+        EntityFactory.put(new TableItem("Сообщение", EMMessage.class));
+        EntityFactory.put(new TableItem("Студент", EMStudent.class));
+        EntityFactory.put(new TableItem("Задание", EMTask.class));
+        EntityFactory.put(new TableItem("Тема", EMTheme.class));
+        EntityFactory.put(new TableItem("Сдача-Билет", EMTicket.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
-        PrefixMap.put("MFSelection.createDate","c");
-        PrefixMap.put("MeasureFile.importDate","i");
-        PrefixMap.put("MeasureFile.measureDate","m");
-        PrefixMap.put("MeasureFile.gps","g");
+        PrefixMap.put("EMMessage.sendTime","s");
+        PrefixMap.put("EMExamTaking.startTime","s");
+        PrefixMap.put("EMExamTaking.endTime","e");
         /*
         EntityFactory.put(new TableItem("Мета:Внешняя подсистема", MetaExternalSystem.class));
         EntityFactory.put(new TableItem("Мета:Подсистемы", MetaSubSystem.class));
@@ -102,6 +112,67 @@ public class Values extends ValuesBase {
     public final static int UserEMTeacher = 4;
     @CONST(group = "User", title = "Студент")
     public final static int UserEMStudent = 5;
+    //------------- Состояние студента  -----------------------------------------------------
+    @CONST(group = "Student", title = "Не определен")
+    public final static int StudentStateUndefined = 0;
+    @CONST(group = "Student", title = "Учится")
+    public final static int StudentStateNormal = 1;
+    @CONST(group = "Student", title = "Ак.отпуск")
+    public final static int StudentStateAcadem = 2;
+    @CONST(group = "Student", title = "Отчислен")
+    public final static int StudentStateSendDown = 3;
+    //------------- Состояние сдачи экзамена студентом --------------------------------------------------
+    @CONST(group = "Ticket", title = "Не определен")
+    public final static int TicketUndefined = 0;
+    @CONST(group = "Ticket", title = "Нет допуска")
+    public final static int TicketNotAllowed = 1;
+    @CONST(group = "Ticket", title = "Допущен")
+    public final static int TicketAllowed = 2;
+    @CONST(group = "Ticket", title = "Назначено время")
+    public final static int TicketTimeAppointed = 3;
+    @CONST(group = "Ticket", title = "Подтверждение явки")
+    public final static int TicketConfirmation = 4;
+    @CONST(group = "Ticket", title = "Неявка")
+    public final static int TicketNonAppearance = 5;
+    @CONST(group = "Ticket", title = "На экзамене")
+    public final static int TicketOnExam = 6;
+    @CONST(group = "Ticket", title = "Закончил сдачу")
+    public final static int TicketPassedExam = 7;
+    @CONST(group = "Ticket", title = "Получил оценку")
+    public final static int TicketGotRating = 8;
+    //------------- Состояние приема --------------------------------------------------
+    @CONST(group = "Taking", title = "Не определено")
+    public final static int TakingUndefined = 0;
+    @CONST(group = "Taking", title = "Редактируется")
+    public final static int TakingEdited = 1;
+    @CONST(group = "Taking", title = "Выставление допусков")
+    public final static int TakingAllowance = 2;
+    @CONST(group = "Taking", title = "Назначено время")
+    public final static int TakingSetTime = 3;
+    @CONST(group = "Taking", title = "Идет экзамен")
+    public final static int TakingInProcess = 4;
+    @CONST(group = "Taking", title = "Экзамен закончен")
+    public final static int TakingFinished = 5;
+    @CONST(group = "Taking", title = "Оценки выставлены")
+    public final static int TakingClosed = 6;
+    //------------- Состояние ответа --------------------------------------------------
+    @CONST(group = "Answer", title = "Нет ответа")
+    public final static int AnswerNoAck = 0;
+    @CONST(group = "Taking", title = "Отвечает")
+    public final static int AnswerInProcess = 1;
+    @CONST(group = "Taking", title = "Ответил")
+    public final static int AnswerDone = 2;
+    @CONST(group = "Taking", title = "Проверка")
+    public final static int AnswerCheck = 3;
+    @CONST(group = "Taking", title = "Оценен")
+    public final static int AnswerRatingIsSet = 4;
+    //------------- Тип задания --------------------------------------------------
+    @CONST(group = "Task", title = "Не определен")
+    public final static int TaskUndefined = 0;
+    @CONST(group = "Task", title = "Вопрос (тест)")
+    public final static int TaskQuestion = 1;
+    @CONST(group = "Task", title = "Задача")
+    public final static int TaskExercise = 2;
     //-------------------------------------------------------------------------------------------
     public static void main(String a[]){
         Values.init();
