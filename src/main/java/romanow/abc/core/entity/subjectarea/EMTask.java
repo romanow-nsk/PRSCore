@@ -9,7 +9,7 @@ import romanow.abc.core.entity.artifacts.Artifact;
 
 public class EMTask extends EMNamedEntity{
     @Getter private transient ErrorList errorList = new ErrorList();
-    @Getter private EntityLink<EMTheme> EMDiscipline = new EntityLink<>();  // Обратная ссылка
+    @Getter private EntityLink<EMTheme> EMTheme = new EntityLink<>();  // Обратная ссылка
     @Getter @Setter private String taskText="";
     @Getter @Setter private int type= Values.TaskUndefined;
     @Getter @Setter private int ownRating= 0;                        // Собственный рейтинговый балл

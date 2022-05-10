@@ -8,5 +8,5 @@ import romanow.abc.core.entity.EntityRefList;
 public class EMTheme extends EMNamedEntity{
     @Getter private transient ErrorList errorList = new ErrorList();
     @Getter private EntityLink<EMDiscipline> EMDiscipline = new EntityLink<>();               // Обратная ссылка
-    @Getter private EntityRefList<EMTask> themes = new EntityRefList<>(EMTask.class);
+    @Getter private EntityRefList<EMTask> tasks = new EntityRefList<>(EMTask.class);
 }

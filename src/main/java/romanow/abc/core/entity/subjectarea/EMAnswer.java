@@ -10,7 +10,7 @@ import romanow.abc.core.entity.artifacts.Artifact;
 
 public class EMAnswer extends Entity {
     @Getter EntityLink<EMTicket> EMTicket = new EntityLink<>();                         // Обратная ссылка
-    @Getter EntityLinkList<EMMessage> messages = new EntityLinkList<>(EMMessage.class); // Приямые ссылки
+    @Getter EntityLinkList<EMMessage> messages = new EntityLinkList<>(EMMessage.class); // Прямые ссылки
     @Getter EntityLink<EMTask> tasl = new EntityLink<>(EMTask.class);                   // Задание
     @Getter @Setter int rating=0;                                                       // Оценка
     @Getter @Setter int state= Values.AnswerNoAck;                                      // Состояние

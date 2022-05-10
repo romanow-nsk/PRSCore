@@ -3,11 +3,12 @@ package romanow.abc.core.entity.subjectarea;
 import lombok.Getter;
 import lombok.Setter;
 import romanow.abc.core.entity.EntityLink;
+import romanow.abc.core.entity.EntityLinkList;
 import romanow.abc.core.entity.EntityRefList;
 
 public class EMExamRule extends EMNamedEntity {
     @Getter private EntityLink<EMDiscipline> EMDiscipline = new EntityLink<>();                 // Обратная ссылка
-    @Getter private EntityRefList<EMTheme> themes = new EntityRefList<>(EMTheme.class);
+    @Getter private EntityLinkList<EMTheme> themes = new EntityLinkList<>(EMTheme.class);
     @Getter @Setter private int minimalRating=30;               // Рейтинг для допуска
     @Getter @Setter private int examOwnRating=40;               // Собственный рейтинг экзамена/зачета
     @Getter @Setter private int examDuration=180;               // Продолжительность в минутах

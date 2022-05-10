@@ -8,7 +8,7 @@ import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityRefList;
 
 public class EMTicket extends Entity {
-    @Getter private EntityLink<EMExam> EMExamen = new EntityLink<>();                     // Обратная ссылка
+    @Getter private EntityLink<EMExam> EMExamen = new EntityLink<>();                       // Обратная ссылка
     @Getter private EntityLink<EMExamTaking> taking = new EntityLink<>();                   // Прием (без связывания)
     @Getter private EntityLink<EMStudent> student = new EntityLink<>(EMStudent.class);      // Студент
     @Getter @Setter int state = Values.TicketUndefined;
