@@ -28,10 +28,8 @@ public class Values extends ValuesBase {
     // 1. Константы наследуются (аннотации)
     // 2. Массивы строк перекрываются
     // 3. статическая инициализация наследуется
-    private final static int EMReleaseNumber=14;                  // номер сборки сервера
-    private User superUser = new User(UserSuperAdminType, "Система", "", "", "ESSDataserver", "schwanensee1969","9139877277");
-    //----------- Данные ПЛК вне мета-системы -------------------------------------
-    public final static String ESSStateIcon[]={"/ess_none.png","/ess_off.png","/ess_on.png"};
+    private final static int EMReleaseNumber=1;                  // номер сборки сервера
+    private User superUser = new User(UserSuperAdminType, "Система", "", "", "EMDataserver", "schwanensee1969","9139877277");
     //-----------------------------------------------------------------------------
     public final static int PopupMessageDelay=6;                // Тайм-аут всплывающего окна
     public final static int PopupLongDelay=20;                  // Тайм-аут всплывающего окна
@@ -44,10 +42,10 @@ public class Values extends ValuesBase {
             "romanow.abc.desktop.EMClient",
             "","",""};
     private  final static String EMAppNames[]={
-            "EM",
-            "EM",
-            "EM",
-            "EM",
+            "em",
+            "em",
+            "em",
+            "em",
             "EM.apk",
             "EMDataserver.jar",
             "romanow.abc.desktop.module",
