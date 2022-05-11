@@ -8,6 +8,6 @@ import romanow.abc.core.entity.EntityRefList;
 public class EMExam extends EMNamedEntity{
     @Getter private EntityLink<EMDiscipline> EMDiscipline = new EntityLink<>();                     // Обратная ссылка
     @Getter private EntityLink<EMExamRule> rule = new EntityLink<>(EMExamRule.class);               // Регламент
-    @Getter private EntityLinkList<EMGroup> groups = new EntityLinkList<>(EMGroup.class);             // Группы
+    @Getter private EntityLinkList<EMGroup> groups = new EntityLinkList<>(EMGroup.class);           // Группы
     @Getter private EntityRefList<EMTicket> tickets = new EntityRefList<>(EMTicket.class);          // Состояние сдачи студентом
     }
