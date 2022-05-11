@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a8c7ee-ce9d-48b7-a8a2-859f841fd4cf" name="Default Changelist" comment="2.0.18 БОМ-БОМ">
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/core/API/RestAPIEM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/core/API/RestAPIEM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/abc/core/constants/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/abc/core/constants/Values.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/EM/FileDescription.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/EM/FileDescription.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/romanow/EM/SqeezyWaveData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/romanow/EM/SqeezyWaveData.java" afterDir="false" />
-    </list>
+    <list default="true" id="89a8c7ee-ce9d-48b7-a8a2-859f841fd4cf" name="Default Changelist" comment="2.0.18 БОМ-БОМ" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,13 +31,6 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
@@ -125,7 +113,6 @@
       <option name="presentableId" value="Default" />
       <updated>1634300555504</updated>
     </task>
-    <option name="localTasksCounter" value="1" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -138,6 +125,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
