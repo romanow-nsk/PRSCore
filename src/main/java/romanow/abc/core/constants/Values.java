@@ -156,13 +156,13 @@ public class Values extends ValuesBase {
     //------------- Состояние ответа --------------------------------------------------
     @CONST(group = "Answer", title = "Нет ответа")
     public final static int AnswerNoAck = 0;
-    @CONST(group = "Taking", title = "Отвечает")
+    @CONST(group = "Answer", title = "Отвечает")
     public final static int AnswerInProcess = 1;
-    @CONST(group = "Taking", title = "Ответил")
+    @CONST(group = "Answer", title = "Ответил")
     public final static int AnswerDone = 2;
-    @CONST(group = "Taking", title = "Проверка")
+    @CONST(group = "Answer", title = "Проверка")
     public final static int AnswerCheck = 3;
-    @CONST(group = "Taking", title = "Оценен")
+    @CONST(group = "Answer", title = "Оценен")
     public final static int AnswerRatingIsSet = 4;
     //------------- Тип задания --------------------------------------------------
     @CONST(group = "Task", title = "Не определен")
