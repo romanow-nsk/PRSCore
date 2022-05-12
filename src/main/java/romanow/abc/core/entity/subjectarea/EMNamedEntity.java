@@ -13,4 +13,5 @@ public class EMNamedEntity extends EMEntity {
     public String getTitle(){
         return name;
         }
+    public EMNamedEntity(){}
 }

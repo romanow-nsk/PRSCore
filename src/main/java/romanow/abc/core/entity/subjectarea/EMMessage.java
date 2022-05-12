@@ -13,4 +13,5 @@ public class EMMessage extends Entity {
     @Getter private EntityLink<Artifact> artifact = new EntityLink<>(Artifact.class);
     @Getter private OwnDateTime sendTime = new OwnDateTime();
     @Getter private EntityLink<User> author = new EntityLink<>();           // id user'a
+    public EMMessage(){}
 }

@@ -16,4 +16,5 @@ public class EMExamRule extends EMNamedEntity {
     @Getter @Setter private int oneExcerciceDefBall=10;         // Балл по умолчанию за задачу
     @Getter @Setter private int questionRating=20;              // Суммарный балл  за тест
     @Getter @Setter private int excerciceRating=20;             // Суммарный балл  за задачу
+    public EMExamRule(){}
     }

@@ -16,4 +16,5 @@ public class EMDiscipline extends EMNamedEntity{
         groups.createMap();
         themes.createMap();
         }
+    public EMDiscipline(){}
 }

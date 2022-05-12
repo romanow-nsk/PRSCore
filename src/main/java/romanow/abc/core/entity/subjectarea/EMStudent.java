@@ -13,5 +13,6 @@ public class EMStudent extends Entity {
     @Getter private EntityLink<EMGroup> EMGroup = new EntityLink<>();               // Обратная ссылка
     @Getter private EntityLink<User> User = new EntityLink<>(User.class);
     @Getter @Setter private int state = Values.StudentStateUndefined;
+    public EMStudent(){}
 
 }

@@ -10,4 +10,5 @@ public class EMEntity extends Entity {
     public ErrorList getErrorList(){
         return new ErrorList();
         }
+    public EMEntity(){}
 }

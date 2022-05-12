@@ -14,4 +14,5 @@ public class EMAnswer extends Entity {
     @Getter EntityLink<EMTask> tasl = new EntityLink<>(EMTask.class);                   // Задание
     @Getter @Setter int rating=0;                                                       // Оценка
     @Getter @Setter int state= Values.AnswerNoAck;                                      // Состояние
+    public EMAnswer(){}
 }

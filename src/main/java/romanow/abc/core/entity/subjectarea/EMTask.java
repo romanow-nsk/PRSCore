@@ -14,4 +14,5 @@ public class EMTask extends EMNamedEntity{
     @Getter @Setter private int type= Values.TaskUndefined;
     @Getter @Setter private int ownRating= 0;                        // Собственный рейтинговый балл
     @Getter private EntityLink<Artifact> artifact = new EntityLink<>(Artifact.class);
+    public EMTask(){}
 }

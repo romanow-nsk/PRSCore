@@ -13,6 +13,8 @@ public class EMExamTaking extends EMNamedEntity{
     @Getter @Setter int state = Values.TakingUndefined;
     @Getter EntityLink<EMDiscipline> EMDiscipline = new EntityLink<>();                 // Обратная ссылка
     @Getter EntityLink<EMExam> exam = new EntityLink<>();                               // Обратная ссылка на экзамен
-    @Getter EntityLinkList<EMGroup> groups = new EntityLinkList<>(EMGroup.class);       // Группы (группа), для которой прием - прямые ссылки
+    @Getter @Setter boolean oneGroup=true;
+    @Getter EntityLink<EMGroup> group = new EntityLink<>(EMGroup.class);                // Группа, для которой прием - прямые ссылки
     @Getter EntityLinkList<EMTicket> tickets = new EntityLinkList<>(EMTicket.class);    // Студенты, для которых прием - прямые ссылки
+    public EMExamTaking(){}
 }
