@@ -126,7 +126,7 @@ public class Values extends ValuesBase {
     public final static int TicketNotAllowed = 1;
     @CONST(group = "Ticket", title = "Допущен")
     public final static int TicketAllowed = 2;
-    @CONST(group = "Ticket", title = "Назначено время")
+    @CONST(group = "Ticket", title = "Назначен на сдачу")
     public final static int TicketTimeAppointed = 3;
     @CONST(group = "Ticket", title = "Подтверждение явки")
     public final static int TicketConfirmation = 4;
@@ -138,15 +138,15 @@ public class Values extends ValuesBase {
     public final static int TicketPassedExam = 7;
     @CONST(group = "Ticket", title = "Получил оценку")
     public final static int TicketGotRating = 8;
-    //------------- Состояние приема --------------------------------------------------
+    //------------- Состояние приема экзамена --------------------------------------------------
     @CONST(group = "Taking", title = "Не определено")
     public final static int TakingUndefined = 0;
     @CONST(group = "Taking", title = "Редактируется")
     public final static int TakingEdited = 1;
-    @CONST(group = "Taking", title = "Выставление допусков")
-    public final static int TakingAllowance = 2;
+    @CONST(group = "Taking", title = "Время не назначено")
+    public final static int TakingTimeNotSet = 2;
     @CONST(group = "Taking", title = "Назначено время")
-    public final static int TakingSetTime = 3;
+    public final static int TakingTimeIsSet = 3;
     @CONST(group = "Taking", title = "Идет экзамен")
     public final static int TakingInProcess = 4;
     @CONST(group = "Taking", title = "Экзамен закончен")
