@@ -2,6 +2,7 @@ package romanow.abc.core.API;
 
 import romanow.abc.core.constants.OidList;
 import romanow.abc.core.entity.EntityList;
+import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.baseentityes.*;
 import romanow.abc.core.entity.subjectarea.*;
 import retrofit2.Call;
@@ -18,4 +19,10 @@ public interface RestAPIEM {
     /** Удалить группу с экзамена (удаление EMTicket для студентов) */
     @POST("/api/exam/group/remove")
     Call<JInt> removeGroupFromExam(@Header("SessionToken") String token, @Query("examId") long examId, @Query("groupId") long groupId);
+    /** Получить тикеты студентов для экзамена */
+    @GET("/api/exam/ticket/list")
+    Call<EMExam> getTicketsForExam(@Header("SessionToken") String token, @Query("examId") long examId);
+    /** Получить тикеты студентов для приема */
+    @GET("/api/taking/ticket/list")
+    Call<EMExamTaking> getTicketsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
 }
