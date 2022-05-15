@@ -183,7 +183,7 @@ public class Values extends ValuesBase {
         takingFactory.add(new Transition(TakingEdit,TakingReady,"Закончить редакт.","EndEdit"));
         takingFactory.add(new Transition(TakingReady,TakingTimeIsSet,"Назначить время","TimeSet"));
         takingFactory.add(new Transition(TakingTimeIsSet,TakingReady,"Отменить назначенное время","TimeCancel"));
-        takingFactory.add(new Transition(TakingReady,TakingInProcess,"Начать экзамен","Start"));
+        takingFactory.add(new Transition(TakingTimeIsSet,TakingInProcess,"Начать экзамен","Start"));
         takingFactory.add(new Transition(TakingInProcess,TakingAnswerCheck,"Закончить прием","Stop"));
         takingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
         takingFactory.add(new Transition(TakingAnswerCheck,TakingRatingCalc,"Закончить проверку","Close"));
@@ -194,6 +194,12 @@ public class Values extends ValuesBase {
             }
     public final static TransitionsFactory answerFactory = new TransitionsFactory("EMAnswer");
     static  {
+            answerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
+            answerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
+            answerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
+            answerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
+            answerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
+            answerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
             }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
