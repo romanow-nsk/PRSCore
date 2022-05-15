@@ -25,4 +25,8 @@ public interface RestAPIEM {
     /** Получить тикеты студентов для приема */
     @GET("/api/taking/ticket/list")
     Call<EMExamTaking> getTicketsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
+    /** Выполнить функцию перехода */
+    @POST("/api/state/change")
+    Call<JEmpty> execTransition(@Header("SessionToken") String token, @Query("stateOid") long stateOid, @Query("stateMashine") String stateMashine, @Query("transition") String transition);
+
 }

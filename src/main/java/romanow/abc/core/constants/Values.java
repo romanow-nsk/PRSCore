@@ -4,6 +4,8 @@ import romanow.abc.core.UniException;
 import romanow.abc.core.entity.EntityIndexedFactory;
 import romanow.abc.core.entity.base.WorkSettingsBase;
 import romanow.abc.core.entity.subjectarea.*;
+import romanow.abc.core.entity.subjectarea.statemashine.Transition;
+import romanow.abc.core.entity.subjectarea.statemashine.TransitionsFactory;
 import romanow.abc.core.entity.users.User;
 
 import java.util.HashMap;
@@ -151,11 +153,11 @@ public class Values extends ValuesBase {
     public final static int TakingTimeIsSet = 3;
     @CONST(group = "Taking", title = "Идет экзамен")
     public final static int TakingInProcess = 4;
-    @CONST(group = "Taking", title = "Экзамен закончен")
-    public final static int TakingFinished = 5;
-    @CONST(group = "Taking", title = "Оценки выставлены")
-    public final static int TakingClosed = 6;
-    @CONST(group = "Taking", title = "В ведомости")
+    @CONST(group = "Taking", title = "Проверка ответов")
+    public final static int TakingAnswerCheck = 5;
+    @CONST(group = "Taking", title = "Выставление оценок")
+    public final static int TakingRatingCalc = 6;
+    @CONST(group = "Taking", title = "Ведомость сдана")
     public final static int TakingInArchive = 7;
     //------------- Состояние ответа --------------------------------------------------
     @CONST(group = "Answer", title = "Нет ответа")
@@ -175,6 +177,30 @@ public class Values extends ValuesBase {
     public final static int TaskQuestion = 1;
     @CONST(group = "Task", title = "Задача")
     public final static int TaskExercise = 2;
+    //------------------------------------------------------------------------------------------
+    public final static TransitionsFactory takingFactory = new TransitionsFactory("EMExamTaking");
+    static {
+        takingFactory.add(new Transition(TakingEdit,TakingReady,"Закончить редакт.","EndEdit"));
+        takingFactory.add(new Transition(TakingReady,TakingTimeIsSet,"Назначить время","TimeSet"));
+        takingFactory.add(new Transition(TakingTimeIsSet,TakingReady,"Отменить назначенное время","TimeCancel"));
+        takingFactory.add(new Transition(TakingReady,TakingInProcess,"Начать экзамен","Start"));
+        takingFactory.add(new Transition(TakingInProcess,TakingAnswerCheck,"Закончить прием","Stop"));
+        takingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
+        takingFactory.add(new Transition(TakingAnswerCheck,TakingRatingCalc,"Закончить проверку","Close"));
+        takingFactory.add(new Transition(TakingRatingCalc,TakingInArchive,"Сдать ведомость","InArchive"));
+        }
+    public final static TransitionsFactory ticketFactory = new TransitionsFactory("EMTicket");
+    static  {
+            }
+    public final static TransitionsFactory answerFactory = new TransitionsFactory("EMAnswer");
+    static  {
+            }
+    public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
+    static  {
+            stateFactoryMap.put(takingFactory.name,takingFactory);
+            stateFactoryMap.put(ticketFactory.name,ticketFactory);
+            stateFactoryMap.put(answerFactory.name,answerFactory);
+            }
     //-------------------------------------------------------------------------------------------
     public static void main(String a[]){
         Values.init();

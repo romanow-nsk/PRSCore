@@ -8,7 +8,7 @@ import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityLinkList;
 import romanow.abc.core.entity.artifacts.Artifact;
 
-public class EMAnswer extends Entity {
+public class EMAnswer extends Entity implements I_State{
     @Getter EntityLink<EMTicket> EMTicket = new EntityLink<>();                         // Обратная ссылка
     @Getter EntityLinkList<EMMessage> messages = new EntityLinkList<>(EMMessage.class); // Прямые ссылки
     @Getter EntityLink<EMTask> task = new EntityLink<>(EMTask.class);                   // Задание

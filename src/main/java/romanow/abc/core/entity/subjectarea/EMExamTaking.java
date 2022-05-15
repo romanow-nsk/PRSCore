@@ -8,7 +8,7 @@ import romanow.abc.core.entity.EntityLinkList;
 import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.utils.OwnDateTime;
 
-public class EMExamTaking extends EMNamedEntity{
+public class EMExamTaking extends EMNamedEntity implements I_State{
     @Getter @Setter OwnDateTime startTime = new OwnDateTime(0);
     @Getter @Setter int duration=0;
     @Getter @Setter int state = Values.TakingUndefined;

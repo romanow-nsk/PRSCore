@@ -7,7 +7,7 @@ import romanow.abc.core.entity.Entity;
 import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityRefList;
 
-public class EMTicket extends Entity {
+public class EMTicket extends Entity implements I_State {
     @Getter private EntityLink<EMExam> EMExam = new EntityLink<>();                         // Обратная ссылка
     @Getter private EntityLink<EMExamTaking> EMExamTaking = new EntityLink<>();             // Обратная ссылка
     @Getter private EntityLink<EMStudent> student = new EntityLink<>(EMStudent.class);      // Студент
