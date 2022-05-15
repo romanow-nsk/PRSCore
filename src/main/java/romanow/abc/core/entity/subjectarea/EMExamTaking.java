@@ -6,12 +6,13 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityLinkList;
 import romanow.abc.core.entity.EntityRefList;
+import romanow.abc.core.entity.StateEntity;
 import romanow.abc.core.utils.OwnDateTime;
 
-public class EMExamTaking extends EMNamedEntity implements I_State{
+public class EMExamTaking extends StateEntity {
+    @Getter @Setter String name="";
     @Getter @Setter OwnDateTime startTime = new OwnDateTime(0);
     @Getter @Setter int duration=0;
-    @Getter @Setter int state = Values.TakingUndefined;
     @Getter EntityLink<EMDiscipline> EMDiscipline = new EntityLink<>();                 // Обратная ссылка
     @Getter EntityLink<EMExam> exam = new EntityLink<>();                               // Обратная ссылка на экзамен
     @Getter @Setter boolean oneGroup=false;

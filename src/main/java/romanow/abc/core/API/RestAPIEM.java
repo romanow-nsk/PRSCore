@@ -1,5 +1,6 @@
 package romanow.abc.core.API;
 
+import romanow.abc.core.DBRequest;
 import romanow.abc.core.constants.OidList;
 import romanow.abc.core.entity.EntityList;
 import romanow.abc.core.entity.EntityRefList;
@@ -27,6 +28,5 @@ public interface RestAPIEM {
     Call<EMExamTaking> getTicketsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
     /** Выполнить функцию перехода */
     @POST("/api/state/change")
-    Call<JEmpty> execTransition(@Header("SessionToken") String token, @Query("stateOid") long stateOid, @Query("stateMashine") String stateMashine, @Query("transition") String transition);
-
+    Call<JEmpty> execTransition(@Header("SessionToken") String token, @Body DBRequest body);
 }

@@ -19,5 +19,11 @@ public class TransitionsFactory extends ArrayList<Transition> {
             if (transition.transName.equals(name))
                 return transition;
         return null;
+        }
+    public Transition getByState(int cState, int newState){
+        for (Transition transition : this)
+            if (transition.curState==cState && transition.nextState==newState)
+                return transition;
+        return null;
     }
 }
