@@ -138,13 +138,15 @@ public class Values extends ValuesBase {
     public final static int TicketPassedExam = 7;
     @CONST(group = "Ticket", title = "Получил оценку")
     public final static int TicketGotRating = 8;
+    @CONST(group = "Ticket", title = "В ведомости")
+    public final static int TicketInArchive = 9;
     //------------- Состояние приема экзамена --------------------------------------------------
     @CONST(group = "Taking", title = "Не определено")
     public final static int TakingUndefined = 0;
     @CONST(group = "Taking", title = "Редактируется")
-    public final static int TakingEdited = 1;
-    @CONST(group = "Taking", title = "Время не назначено")
-    public final static int TakingTimeNotSet = 2;
+    public final static int TakingEdit = 1;
+    @CONST(group = "Taking", title = "Готово")
+    public final static int TakingReady = 2;
     @CONST(group = "Taking", title = "Назначено время")
     public final static int TakingTimeIsSet = 3;
     @CONST(group = "Taking", title = "Идет экзамен")
@@ -153,12 +155,14 @@ public class Values extends ValuesBase {
     public final static int TakingFinished = 5;
     @CONST(group = "Taking", title = "Оценки выставлены")
     public final static int TakingClosed = 6;
+    @CONST(group = "Taking", title = "В ведомости")
+    public final static int TakingInArchive = 7;
     //------------- Состояние ответа --------------------------------------------------
     @CONST(group = "Answer", title = "Нет ответа")
     public final static int AnswerNoAck = 0;
     @CONST(group = "Answer", title = "Отвечает")
     public final static int AnswerInProcess = 1;
-    @CONST(group = "Answer", title = "Ответил")
+    @CONST(group = "Answer", title = "Ответ отправлен")
     public final static int AnswerDone = 2;
     @CONST(group = "Answer", title = "Проверка")
     public final static int AnswerCheck = 3;

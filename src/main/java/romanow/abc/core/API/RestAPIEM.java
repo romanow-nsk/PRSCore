@@ -19,9 +19,9 @@ public interface RestAPIEM {
     /** Удалить группу с экзамена (удаление EMTicket для студентов) */
     @POST("/api/exam/group/remove")
     Call<JInt> removeGroupFromExam(@Header("SessionToken") String token, @Query("examId") long examId, @Query("groupId") long groupId);
-    /** Получить тикеты студентов для экзамена */
+    /** Получить тикеты студентов для экзамена (groupId=0 для всех групп) */
     @GET("/api/exam/ticket/list")
-    Call<EMExam> getTicketsForExam(@Header("SessionToken") String token, @Query("examId") long examId);
+    Call<EMExam> getTicketsForExam(@Header("SessionToken") String token, @Query("examId") long examId,@Query("groupId") long groupId);
     /** Получить тикеты студентов для приема */
     @GET("/api/taking/ticket/list")
     Call<EMExamTaking> getTicketsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
