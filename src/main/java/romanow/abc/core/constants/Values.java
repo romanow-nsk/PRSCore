@@ -129,11 +129,11 @@ public class Values extends ValuesBase {
     @CONST(group = "Ticket", title = "Допущен")
     public final static int TicketAllowed = 2;
     @CONST(group = "Ticket", title = "Назначен на сдачу")
-    public final static int TicketTimeAppointed = 3;
+    public final static int TicketTakingSet = 3;
     @CONST(group = "Ticket", title = "Подтверждение явки")
     public final static int TicketConfirmation = 4;
     @CONST(group = "Ticket", title = "Неявка")
-    public final static int TicketNonAppearance = 5;
+    public final static int TicketNoConfirmation = 5;
     @CONST(group = "Ticket", title = "На экзамене")
     public final static int TicketOnExam = 6;
     @CONST(group = "Ticket", title = "Закончил сдачу")
@@ -191,16 +191,25 @@ public class Values extends ValuesBase {
         }
     public final static TransitionsFactory ticketFactory = new TransitionsFactory("EMTicket");
     static  {
-            }
+        ticketFactory.add(new Transition(TicketNotAllowed,TicketAllowed,"Допустить к сдаче","Allow"));
+        ticketFactory.add(new Transition(TicketAllowed,TicketTakingSet,"Назначить прием","SetTaking"));
+        ticketFactory.add(new Transition(TicketTakingSet,TicketConfirmation,"Начать экзамен","Start"));
+        ticketFactory.add(new Transition(TicketConfirmation,TicketOnExam,"Подтв. явку","Confirmation"));
+        ticketFactory.add(new Transition(TicketConfirmation,TicketNoConfirmation,"Неявка","NonConfirmation"));
+        ticketFactory.add(new Transition(TicketNoConfirmation,TicketAllowed,"Повт.допуск","RetryAllow"));
+        ticketFactory.add(new Transition(TicketOnExam,TicketPassedExam,"Закончить","Finish"));
+        ticketFactory.add(new Transition(TicketPassedExam,TicketGotRating,"Итог","SetRating"));
+        ticketFactory.add(new Transition(TicketGotRating,TicketInArchive,"В ведомость","IntoArchive"));
+        }
     public final static TransitionsFactory answerFactory = new TransitionsFactory("EMAnswer");
     static  {
-            answerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
-            answerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
-            answerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
-            answerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
-            answerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
-            answerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
-            }
+        answerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
+        answerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
+        answerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
+        answerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
+        answerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
+        answerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
+        }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
             stateFactoryMap.put(takingFactory.name,takingFactory);
