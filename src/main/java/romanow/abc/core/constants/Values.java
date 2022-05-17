@@ -204,12 +204,12 @@ public class Values extends ValuesBase {
         }
     public final static TransitionsFactory AnswerFactory = new TransitionsFactory("EMAnswer");
     static  {
-        AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
-        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
-        AnswerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
+        AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Начать ответ","Start"));
+        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","Send"));
+        AnswerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","Check"));
         AnswerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
-        AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
-        AnswerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
+        AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","Retry"));
+        AnswerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","Retry2"));
         }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
