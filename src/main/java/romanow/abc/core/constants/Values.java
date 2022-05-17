@@ -86,7 +86,7 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Настройки", WorkSettings.class));
         EntityFactory.put(new TableItem("Ответ", EMAnswer.class));
         EntityFactory.put(new TableItem("Предмет", EMDiscipline.class));
-        EntityFactory.put(new TableItem("Экзамен", EMExam.class));
+        EntityFactory.put(new TableItem("Рейтинг группы", EMGroupRating.class));
         EntityFactory.put(new TableItem("Регламент", EMExamRule.class));
         EntityFactory.put(new TableItem("Прием экзамена", EMExamTaking.class));
         EntityFactory.put(new TableItem("Группа", EMGroup.class));
@@ -94,7 +94,7 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Студент", EMStudent.class));
         EntityFactory.put(new TableItem("Задание", EMTask.class));
         EntityFactory.put(new TableItem("Тема", EMTheme.class));
-        EntityFactory.put(new TableItem("Сдача-Билет", EMTicket.class));
+        EntityFactory.put(new TableItem("Рейтинг студента", EMStudRating.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
         PrefixMap.put("EMMessage.sendTime","s");
         PrefixMap.put("EMExamTaking.startTime","s");
@@ -123,25 +123,25 @@ public class Values extends ValuesBase {
     public final static int StudentStateSendDown = 3;
     //------------- Состояние сдачи экзамена студентом --------------------------------------------------
     @CONST(group = "Ticket", title = "Не определен")
-    public final static int TicketUndefined = 0;
-    @CONST(group = "Ticket", title = "Нет допуска")
-    public final static int TicketNotAllowed = 1;
-    @CONST(group = "Ticket", title = "Допущен")
-    public final static int TicketAllowed = 2;
-    @CONST(group = "Ticket", title = "Назначен на сдачу")
-    public final static int TicketTakingSet = 3;
-    @CONST(group = "Ticket", title = "Подтверждение явки")
-    public final static int TicketConfirmation = 4;
-    @CONST(group = "Ticket", title = "Неявка")
-    public final static int TicketNoConfirmation = 5;
-    @CONST(group = "Ticket", title = "На экзамене")
-    public final static int TicketOnExam = 6;
-    @CONST(group = "Ticket", title = "Закончил сдачу")
-    public final static int TicketPassedExam = 7;
-    @CONST(group = "Ticket", title = "Получил оценку")
-    public final static int TicketGotRating = 8;
-    @CONST(group = "Ticket", title = "В ведомости")
-    public final static int TicketInArchive = 9;
+    public final static int StudRatingUndefined = 0;
+    @CONST(group = "StudRating", title = "Нет допуска")
+    public final static int StudRatingNotAllowed = 1;
+    @CONST(group = "StudRating", title = "Допущен")
+    public final static int StudRatingAllowed = 2;
+    @CONST(group = "StudRating", title = "Назначен на сдачу")
+    public final static int StudRatingTakingSet = 3;
+    @CONST(group = "StudRating", title = "Подтверждение явки")
+    public final static int StudRatingConfirmation = 4;
+    @CONST(group = "StudRating", title = "Неявка")
+    public final static int StudRatingNoConfirmation = 5;
+    @CONST(group = "StudRating", title = "На экзамене")
+    public final static int StudRatingOnExam = 6;
+    @CONST(group = "StudRating", title = "Закончил сдачу")
+    public final static int StudRatingPassedExam = 7;
+    @CONST(group = "StudRating", title = "Получил оценку")
+    public final static int StudRatingGotRating = 8;
+    @CONST(group = "StudRating", title = "В ведомости")
+    public final static int StudRatingInArchive = 9;
     //------------- Состояние приема экзамена --------------------------------------------------
     @CONST(group = "Taking", title = "Не определено")
     public final static int TakingUndefined = 0;
@@ -178,43 +178,43 @@ public class Values extends ValuesBase {
     @CONST(group = "Task", title = "Задача")
     public final static int TaskExercise = 2;
     //------------------------------------------------------------------------------------------
-    public final static TransitionsFactory takingFactory = new TransitionsFactory("EMExamTaking");
+    public final static TransitionsFactory TakingFactory = new TransitionsFactory("EMExamTaking");
     static {
-        takingFactory.add(new Transition(TakingEdit,TakingReady,"Закончить редакт.","EndEdit"));
-        takingFactory.add(new Transition(TakingReady,TakingTimeIsSet,"Назначить время","TimeSet"));
-        takingFactory.add(new Transition(TakingTimeIsSet,TakingReady,"Отменить назначенное время","TimeCancel"));
-        takingFactory.add(new Transition(TakingTimeIsSet,TakingInProcess,"Начать экзамен","Start"));
-        takingFactory.add(new Transition(TakingInProcess,TakingAnswerCheck,"Закончить прием","Stop"));
-        takingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
-        takingFactory.add(new Transition(TakingAnswerCheck,TakingRatingCalc,"Закончить проверку","Close"));
-        takingFactory.add(new Transition(TakingRatingCalc,TakingInArchive,"Сдать ведомость","InArchive"));
+        TakingFactory.add(new Transition(TakingEdit,TakingReady,"Закончить редакт.","EndEdit"));
+        TakingFactory.add(new Transition(TakingReady,TakingTimeIsSet,"Назначить время","TimeSet"));
+        TakingFactory.add(new Transition(TakingTimeIsSet,TakingReady,"Отменить назначенное время","TimeCancel"));
+        TakingFactory.add(new Transition(TakingTimeIsSet,TakingInProcess,"Начать экзамен","Start"));
+        TakingFactory.add(new Transition(TakingInProcess,TakingAnswerCheck,"Закончить прием","Stop"));
+        TakingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
+        TakingFactory.add(new Transition(TakingAnswerCheck,TakingRatingCalc,"Закончить проверку","Close"));
+        TakingFactory.add(new Transition(TakingRatingCalc,TakingInArchive,"Сдать ведомость","InArchive"));
         }
-    public final static TransitionsFactory ticketFactory = new TransitionsFactory("EMTicket");
+    public final static TransitionsFactory StudRatingFactory = new TransitionsFactory("EMStudRating");
     static  {
-        ticketFactory.add(new Transition(TicketNotAllowed,TicketAllowed,"Допустить к сдаче","Allow"));
-        ticketFactory.add(new Transition(TicketAllowed,TicketTakingSet,"Назначить прием","SetTaking"));
-        ticketFactory.add(new Transition(TicketTakingSet,TicketConfirmation,"Начать экзамен","Start"));
-        ticketFactory.add(new Transition(TicketConfirmation,TicketOnExam,"Подтв. явку","Confirmation"));
-        ticketFactory.add(new Transition(TicketConfirmation,TicketNoConfirmation,"Неявка","NonConfirmation"));
-        ticketFactory.add(new Transition(TicketNoConfirmation,TicketAllowed,"Повт.допуск","RetryAllow"));
-        ticketFactory.add(new Transition(TicketOnExam,TicketPassedExam,"Закончить","Finish"));
-        ticketFactory.add(new Transition(TicketPassedExam,TicketGotRating,"Итог","SetRating"));
-        ticketFactory.add(new Transition(TicketGotRating,TicketInArchive,"В ведомость","IntoArchive"));
+        StudRatingFactory.add(new Transition(StudRatingNotAllowed,StudRatingAllowed,"Допустить к сдаче","Allow"));
+        StudRatingFactory.add(new Transition(StudRatingAllowed,StudRatingTakingSet,"Назначить прием","SetTaking"));
+        StudRatingFactory.add(new Transition(StudRatingTakingSet,StudRatingConfirmation,"Начать экзамен","Start"));
+        StudRatingFactory.add(new Transition(StudRatingConfirmation,StudRatingOnExam,"Подтв. явку","Confirmation"));
+        StudRatingFactory.add(new Transition(StudRatingConfirmation,StudRatingNoConfirmation,"Неявка","NonConfirmation"));
+        StudRatingFactory.add(new Transition(StudRatingNoConfirmation,StudRatingAllowed,"Повт.допуск","RetryAllow"));
+        StudRatingFactory.add(new Transition(StudRatingOnExam,StudRatingPassedExam,"Закончить","Finish"));
+        StudRatingFactory.add(new Transition(StudRatingPassedExam,StudRatingGotRating,"Итог","SetRating"));
+        StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingInArchive,"В ведомость","IntoArchive"));
         }
-    public final static TransitionsFactory answerFactory = new TransitionsFactory("EMAnswer");
+    public final static TransitionsFactory AnswerFactory = new TransitionsFactory("EMAnswer");
     static  {
-        answerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
-        answerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
-        answerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
-        answerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
-        answerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
-        answerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
+        AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Редакт. ответ","StartAnswer"));
+        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","SendAnswer"));
+        AnswerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","StartCheck"));
+        AnswerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
+        AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","RetryAnswer"));
+        AnswerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","RetryAnswer2"));
         }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
-            stateFactoryMap.put(takingFactory.name,takingFactory);
-            stateFactoryMap.put(ticketFactory.name,ticketFactory);
-            stateFactoryMap.put(answerFactory.name,answerFactory);
+            stateFactoryMap.put(TakingFactory.name,TakingFactory);
+            stateFactoryMap.put(StudRatingFactory.name,StudRatingFactory);
+            stateFactoryMap.put(AnswerFactory.name,AnswerFactory);
             }
     //-------------------------------------------------------------------------------------------
     public static void main(String a[]){
