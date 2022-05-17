@@ -23,4 +23,7 @@ public interface RestAPIEM {
     /** Выполнить функцию перехода */
     @POST("/api/state/change")
     Call<JEmpty> execTransition(@Header("SessionToken") String token, @Body DBRequest body);
+    /** Получить тикеты студентов для приема */
+    @POST("/api/rating/takingforall")
+    Call<JInt> setTakingForAll(@Header("SessionToken") String token, @Query("takingId") long takingId);
 }

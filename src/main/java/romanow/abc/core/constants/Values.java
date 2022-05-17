@@ -122,7 +122,7 @@ public class Values extends ValuesBase {
     @CONST(group = "Student", title = "Отчислен")
     public final static int StudentStateSendDown = 3;
     //------------- Состояние сдачи экзамена студентом --------------------------------------------------
-    @CONST(group = "Ticket", title = "Не определен")
+    @CONST(group = "StudRating", title = "Не определен")
     public final static int StudRatingUndefined = 0;
     @CONST(group = "StudRating", title = "Нет допуска")
     public final static int StudRatingNotAllowed = 1;
@@ -192,8 +192,9 @@ public class Values extends ValuesBase {
     public final static TransitionsFactory StudRatingFactory = new TransitionsFactory("EMStudRating");
     static  {
         StudRatingFactory.add(new Transition(StudRatingNotAllowed,StudRatingAllowed,"Допустить к сдаче","Allow"));
-        StudRatingFactory.add(new Transition(StudRatingAllowed,StudRatingTakingSet,"Назначить прием","SetTaking"));
-        StudRatingFactory.add(new Transition(StudRatingTakingSet,StudRatingConfirmation,"Начать экзамен","Start"));
+        StudRatingFactory.add(new Transition(StudRatingAllowed,StudRatingTakingSet,"Назначить прием","TakingSet"));
+        StudRatingFactory.add(new Transition(StudRatingTakingSet,StudRatingAllowed,"Отменить назначение","TakingCancel"));
+        StudRatingFactory.add(new Transition(StudRatingTakingSet,StudRatingConfirmation,"Ждать начала","Wait"));
         StudRatingFactory.add(new Transition(StudRatingConfirmation,StudRatingOnExam,"Подтв. явку","Confirmation"));
         StudRatingFactory.add(new Transition(StudRatingConfirmation,StudRatingNoConfirmation,"Неявка","NonConfirmation"));
         StudRatingFactory.add(new Transition(StudRatingNoConfirmation,StudRatingAllowed,"Повт.допуск","RetryAllow"));
