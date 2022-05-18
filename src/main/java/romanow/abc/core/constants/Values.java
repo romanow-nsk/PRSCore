@@ -140,8 +140,6 @@ public class Values extends ValuesBase {
     public final static int StudRatingPassedExam = 7;
     @CONST(group = "StudRating", title = "Получил оценку")
     public final static int StudRatingGotRating = 8;
-    @CONST(group = "StudRating", title = "В ведомости")
-    public final static int StudRatingInArchive = 9;
     //------------- Состояние приема экзамена --------------------------------------------------
     @CONST(group = "Taking", title = "Не определено")
     public final static int TakingUndefined = 0;
@@ -155,10 +153,8 @@ public class Values extends ValuesBase {
     public final static int TakingInProcess = 4;
     @CONST(group = "Taking", title = "Проверка ответов")
     public final static int TakingAnswerCheck = 5;
-    @CONST(group = "Taking", title = "Выставление оценок")
-    public final static int TakingRatingCalc = 6;
-    @CONST(group = "Taking", title = "Ведомость сдана")
-    public final static int TakingInArchive = 7;
+    @CONST(group = "Taking", title = "Экзамен закончен")
+    public final static int TakingClosed = 6;
     //------------- Состояние ответа --------------------------------------------------
     @CONST(group = "Answer", title = "Нет ответа")
     public final static int AnswerNoAck = 0;
@@ -170,6 +166,8 @@ public class Values extends ValuesBase {
     public final static int AnswerCheck = 3;
     @CONST(group = "Answer", title = "Оценен")
     public final static int AnswerRatingIsSet = 4;
+    @CONST(group = "Answer", title = "Без оценки")
+    public final static int AnswerRatingNotSet = 5;
     //------------- Тип задания --------------------------------------------------
     @CONST(group = "Task", title = "Не определен")
     public final static int TaskUndefined = 0;
@@ -186,8 +184,7 @@ public class Values extends ValuesBase {
         TakingFactory.add(new Transition(TakingTimeIsSet,TakingInProcess,"Начать экзамен","Start"));
         TakingFactory.add(new Transition(TakingInProcess,TakingAnswerCheck,"Закончить прием","Stop"));
         TakingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
-        TakingFactory.add(new Transition(TakingAnswerCheck,TakingRatingCalc,"Закончить проверку","Close"));
-        TakingFactory.add(new Transition(TakingRatingCalc,TakingInArchive,"Сдать ведомость","InArchive"));
+        TakingFactory.add(new Transition(TakingAnswerCheck,TakingClosed,"Закончить экзамен","Close"));
         }
     public final static TransitionsFactory StudRatingFactory = new TransitionsFactory("EMStudRating");
     static  {
@@ -199,13 +196,15 @@ public class Values extends ValuesBase {
         StudRatingFactory.add(new Transition(StudRatingConfirmation,StudRatingNoConfirmation,"Неявка","NonConfirmation"));
         StudRatingFactory.add(new Transition(StudRatingNoConfirmation,StudRatingAllowed,"Повт.допуск","RetryAllow"));
         StudRatingFactory.add(new Transition(StudRatingOnExam,StudRatingPassedExam,"Закончить","Finish"));
-        StudRatingFactory.add(new Transition(StudRatingPassedExam,StudRatingGotRating,"Итог","SetRating"));
-        StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingInArchive,"В ведомость","IntoArchive"));
+        StudRatingFactory.add(new Transition(StudRatingPassedExam,StudRatingGotRating,"Оценка","SetRating"));
+        StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingOnExam,"Доделать","Retry"));
+        StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingAllowed,"Пересдача","NewTaking"));
         }
     public final static TransitionsFactory AnswerFactory = new TransitionsFactory("EMAnswer");
     static  {
         AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Начать ответ","Start"));
-        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","Send"));
+        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"Проверить (студ)","SendStud"));
+        AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"Проверить","Send"));
         AnswerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","Check"));
         AnswerFactory.add(new Transition(AnswerCheck,AnswerRatingIsSet,"Проверен","SetRating"));
         AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","Retry"));

@@ -14,6 +14,9 @@ public class EMStudRating extends StateEntity {
     @Getter @Setter int semesterRating=0;
     @Getter @Setter int questionRating=0;
     @Getter @Setter int excerciceRating=0;
+    public int getSumRating(){
+        return semesterRating+excerciceRating+questionRating;
+        }
     @Getter private EntityRefList<EMAnswer> answers = new EntityRefList<>(EMAnswer.class);  // Ответы
     public EMStudRating(){}
     public boolean enableToRemove(){
