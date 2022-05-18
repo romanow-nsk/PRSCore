@@ -207,7 +207,7 @@ public class Values extends ValuesBase {
         AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Начать ответ","Start"));
         AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"На проверку","Send"));
         AnswerFactory.add(new Transition(AnswerDone,AnswerCheck,"Начать проверку","Check"));
-        AnswerFactory.add(new Transition(AnswerDone,AnswerRatingIsSet,"Проверен","SetRating"));
+        AnswerFactory.add(new Transition(AnswerCheck,AnswerRatingIsSet,"Проверен","SetRating"));
         AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","Retry"));
         AnswerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","Retry2"));
         }
