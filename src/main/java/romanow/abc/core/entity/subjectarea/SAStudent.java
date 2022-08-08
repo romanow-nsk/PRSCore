@@ -8,11 +8,11 @@ import romanow.abc.core.entity.Entity;
 import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.users.User;
 
-public class EMStudent extends Entity {
+public class SAStudent extends Entity {
     @Getter private transient ErrorList errorList = new ErrorList();
-    @Getter private EntityLink<EMGroup> EMGroup = new EntityLink<>();               // Обратная ссылка
+    @Getter private EntityLink<SAGroup> SAGroup = new EntityLink<>();               // Обратная ссылка
     @Getter private EntityLink<User> User = new EntityLink<>(User.class);
     @Getter @Setter private int state = Values.StudentStateUndefined;
-    public EMStudent(){}
+    public SAStudent(){}
 
 }

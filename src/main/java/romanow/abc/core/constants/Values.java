@@ -84,21 +84,26 @@ public class Values extends ValuesBase {
         setEnv(env);
         EntityIndexedFactory EntityFactory = getEntityFactory();
         EntityFactory.put(new TableItem("Настройки", WorkSettings.class));
-        EntityFactory.put(new TableItem("Ответ", EMAnswer.class));
-        EntityFactory.put(new TableItem("Предмет", EMDiscipline.class));
-        EntityFactory.put(new TableItem("Рейтинг группы", EMGroupRating.class));
-        EntityFactory.put(new TableItem("Регламент", EMExamRule.class));
-        EntityFactory.put(new TableItem("Прием экзамена", EMExamTaking.class));
-        EntityFactory.put(new TableItem("Группа", EMGroup.class));
-        EntityFactory.put(new TableItem("Сообщение", EMMessage.class));
-        EntityFactory.put(new TableItem("Студент", EMStudent.class));
-        EntityFactory.put(new TableItem("Задание", EMTask.class));
-        EntityFactory.put(new TableItem("Тема", EMTheme.class));
-        EntityFactory.put(new TableItem("Рейтинг студента", EMStudRating.class));
+        EntityFactory.put(new TableItem("Ответ", SAAnswer.class));
+        EntityFactory.put(new TableItem("Предмет", SADiscipline.class));
+        EntityFactory.put(new TableItem("Рейтинг группы", SAGroupRating.class));
+        EntityFactory.put(new TableItem("Регламент экз.", SAExamRule.class));
+        EntityFactory.put(new TableItem("Регламент сем.", SASemesterRule.class));
+        EntityFactory.put(new TableItem("Прием экзамена", SAExamTaking.class));
+        EntityFactory.put(new TableItem("Группа", SAGroup.class));
+        EntityFactory.put(new TableItem("Сообщение", SAMessage.class));
+        EntityFactory.put(new TableItem("Студент", SAStudent.class));
+        EntityFactory.put(new TableItem("Задание", SATask.class));
+        EntityFactory.put(new TableItem("Тема", SATheme.class));
+        EntityFactory.put(new TableItem("Рейтинг студента", SAStudRating.class));
+        EntityFactory.put(new TableItem("Уч.единица", SAEduUnit.class));
+        EntityFactory.put(new TableItem("Оценка", SAPoint.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
-        PrefixMap.put("EMMessage.sendTime","s");
-        PrefixMap.put("EMExamTaking.startTime","s");
-        PrefixMap.put("EMExamTaking.endTime","e");
+        PrefixMap.put("SAMessage.sendTime","s");
+        PrefixMap.put("SAExamTaking.startTime","s");
+        PrefixMap.put("SAExamTaking.endTime","e");
+        PrefixMap.put("SASemesterRule.beginTime","b");
+        PrefixMap.put("SAPoint.date","d");
         /*
         EntityFactory.put(new TableItem("Мета:Внешняя подсистема", MetaExternalSystem.class));
         EntityFactory.put(new TableItem("Мета:Подсистемы", MetaSubSystem.class));
@@ -112,6 +117,40 @@ public class Values extends ValuesBase {
     public final static int UserEMTeacher = 4;
     @CONST(group = "User", title = "Студент")
     public final static int UserEMStudent = 5;
+    //------------- Вид занятия (учебной единицы)  -----------------------------------------------------
+    @CONST(group = "EduUnit", title = "Не определен")
+    public final static int UnitUndefined = 0;
+    @CONST(group = "EduUnit", title = "Лаб.раб.")
+    public final static int UnitLabWork = 1;
+    @CONST(group = "EduUnit", title = "Практика")
+    public final static int UnitPractic = 2;
+    @CONST(group = "EduUnit", title = "Инд.задание")
+    public final static int UnitIndividualTask= 3;
+    @CONST(group = "EduUnit", title = "Контр.раб.")
+    public final static int UnitTestTask= 4;
+    @CONST(group = "EduUnit", title = "Тестирование")
+    public final static int UnitTesting= 5;
+    @CONST(group = "EduUnit", title = "РГР(З)")
+    public final static int UnitPersonalTask= 6;
+    @CONST(group = "EduUnit", title = "Защита")
+    public final static int UnitDefence= 7;
+    @CONST(group = "EduUnit", title = "Экзамен")
+    public final static int UnitExam= 8;
+    @CONST(group = "EduUnit", title = "Зачёт")
+    public final static int UnitExamLight= 9;
+    //------------- Показатели качества (в троичной системе) (0-не оценен, 1-плюс, 2-минус) ----------------------------
+    @CONST(group = "QualityType", title = "Оформление")
+    public final static int QualityGetUp= 0;
+    @CONST(group = "QualityType", title = "Объем")
+    public final static int QualityVolume= 1;
+    @CONST(group = "QualityType", title = "Оригинальность")
+    public final static int QualityOriginality= 2;
+    @CONST(group = "QualityType", title = "Сложность")
+    public final static int QualityСomplexity=3;
+    @CONST(group = "QualityType", title = "Полнота")
+    public final static int QualityСompleteness=4;
+    @CONST(group = "QualityType", title = "Вериф./Ошибки")
+    public final static int QualityErrors=5;
     //------------- Состояние студента  -----------------------------------------------------
     @CONST(group = "Student", title = "Не определен")
     public final static int StudentStateUndefined = 0;

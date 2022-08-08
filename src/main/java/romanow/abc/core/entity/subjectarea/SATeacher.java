@@ -6,8 +6,8 @@ import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.users.User;
 
-public class EMTeacher extends Entity {
+public class SATeacher extends Entity {
     @Getter private EntityLink<User> User = new EntityLink<>(User.class);
-    @Getter private EntityRefList<EMPermission> permissions = new EntityRefList<>(EMPermission.class);
-    public EMTeacher(){}
+    @Getter private EntityRefList<SAPermission> permissions = new EntityRefList<>(SAPermission.class);
+    public SATeacher(){}
 }

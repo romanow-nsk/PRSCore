@@ -6,20 +6,20 @@ import romanow.abc.core.entity.subjectarea.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-public interface RestAPIEM {
+public interface RestAPI {
     //==================================  API ПРЕДМЕТНОЙ ОБЛАСТИ =======================================================
     /** Добавить группу к экзамену (создание EMTicket для студентов) */
     @POST("/api/rating/group/add")
-    Call<JLong> addGroupToDiscipline(@Header("SessionToken") String token, @Body() EMGroupRating rating);
+    Call<JLong> addGroupToDiscipline(@Header("SessionToken") String token, @Body() SAGroupRating rating);
     /** Удалить группу с экзамена (удаление EMTicket для студентов) */
     @POST("/api/rating/group/remove")
     Call<JEmpty> removeGroupFromExam(@Header("SessionToken") String token, @Query("ratingId") long ratingId);
     /** Получить тикеты студентов для экзамена */
     @GET("/api/rating/group/get")
-    Call<EMGroupRating> getRatingsForGroup(@Header("SessionToken") String token, @Query("ratingId") long examId);
+    Call<SAGroupRating> getRatingsForGroup(@Header("SessionToken") String token, @Query("ratingId") long examId);
     /** Получить тикеты студентов для приема */
     @GET("/api/rating/taking/get")
-    Call<EMExamTaking> getRatingsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
+    Call<SAExamTaking> getRatingsForTaking(@Header("SessionToken") String token, @Query("takingId") long takingId);
     /** Выполнить функцию перехода */
     @POST("/api/state/change")
     Call<JEmpty> execTransition(@Header("SessionToken") String token, @Body DBRequest body);

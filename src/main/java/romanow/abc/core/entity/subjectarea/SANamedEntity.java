@@ -3,9 +3,8 @@ package romanow.abc.core.entity.subjectarea;
 import lombok.Getter;
 import lombok.Setter;
 import romanow.abc.core.ErrorList;
-import romanow.abc.core.entity.Entity;
 
-public class EMNamedEntity extends EMEntity {
+public class SANamedEntity extends SAEntity {
     @Getter private transient ErrorList errorList = new ErrorList();
     @Getter @Setter private String name="";
     @Getter @Setter private String comment="";
@@ -13,5 +12,5 @@ public class EMNamedEntity extends EMEntity {
     public String getTitle(){
         return name;
         }
-    public EMNamedEntity(){}
+    public SANamedEntity(){}
 }

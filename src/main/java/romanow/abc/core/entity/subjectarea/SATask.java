@@ -7,12 +7,12 @@ import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.artifacts.Artifact;
 
-public class EMTask extends EMNamedEntity{
+public class SATask extends SANamedEntity {
     @Getter private transient ErrorList errorList = new ErrorList();
-    @Getter private EntityLink<EMTheme> EMTheme = new EntityLink<>();  // Обратная ссылка
+    @Getter private EntityLink<SATheme> EMTheme = new EntityLink<>();  // Обратная ссылка
     @Getter @Setter private String taskText="";
     @Getter @Setter private int type= Values.TaskUndefined;
     @Getter @Setter private int ownRating= 0;                        // Собственный рейтинговый балл
     @Getter private EntityLink<Artifact> artifact = new EntityLink<>(Artifact.class);
-    public EMTask(){}
+    public SATask(){}
 }
