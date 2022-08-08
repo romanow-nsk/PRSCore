@@ -98,12 +98,16 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Рейтинг студента", SAStudRating.class));
         EntityFactory.put(new TableItem("Уч.единица", SAEduUnit.class));
         EntityFactory.put(new TableItem("Оценка", SAPoint.class));
+        EntityFactory.put(new TableItem("Занятие", SAEvent.class));
+        EntityFactory.put(new TableItem("Посещение", SAVisit.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
         PrefixMap.put("SAMessage.sendTime","s");
         PrefixMap.put("SAExamTaking.startTime","s");
         PrefixMap.put("SAExamTaking.endTime","e");
         PrefixMap.put("SASemesterRule.beginTime","b");
         PrefixMap.put("SAPoint.date","d");
+        PrefixMap.put("SAEvent.date","d");
+        PrefixMap.put("SAVisit.date","d");
         /*
         EntityFactory.put(new TableItem("Мета:Внешняя подсистема", MetaExternalSystem.class));
         EntityFactory.put(new TableItem("Мета:Подсистемы", MetaSubSystem.class));
@@ -151,6 +155,21 @@ public class Values extends ValuesBase {
     public final static int QualityСompleteness=4;
     @CONST(group = "QualityType", title = "Вериф./Ошибки")
     public final static int QualityErrors=5;
+    //-------------- Сосояние оценки ------------------------------------------------------
+    @CONST(group = "PointState", title = "Не выдано")
+    public final static int PSNotIssued= 0;
+    @CONST(group = "PointState", title = "Выдано")
+    public final static int PSIssued= 1;
+    @CONST(group = "PointState", title = "На проверке")
+    public final static int PSOnExpection= 2;
+    @CONST(group = "PointState", title = "Обсуждение")
+    public final static int PSOnExpertise= 3;
+    @CONST(group = "PointState", title = "Принято")
+    public final static int PSAccepted= 4;
+    @CONST(group = "PointState", title = "Возвращено")
+    public final static int PSReturned= 5;
+    @CONST(group = "PointState", title = "Плагиат")
+    public final static int PSPlagiarism= 6;
     //------------- Состояние студента  -----------------------------------------------------
     @CONST(group = "Student", title = "Не определен")
     public final static int StudentStateUndefined = 0;
