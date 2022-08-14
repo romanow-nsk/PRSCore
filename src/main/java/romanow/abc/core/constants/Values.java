@@ -31,25 +31,25 @@ public class Values extends ValuesBase {
     // 2. Массивы строк перекрываются
     // 3. статическая инициализация наследуется
     private final static int EMReleaseNumber=1;                  // номер сборки сервера
-    private User superUser = new User(UserSuperAdminType, "Система", "", "", "EMDataserver", "schwanensee1969","9139877277");
+    private User superUser = new User(UserSuperAdminType, "Система", "", "", "PRSDataserver", "pi31415926","9130000000");
     //-----------------------------------------------------------------------------
     public final static int PopupMessageDelay=6;                // Тайм-аут всплывающего окна
     public final static int PopupLongDelay=20;                  // Тайм-аут всплывающего окна
     private  final static String EMClassNames[]={
             "romanow.abc.core.constants.Values",
             "romanow.abc.core.entity.subjectarea.WorkSettings",
-            "romanow.abc.dataserver.EMDataServer",
-            "romanow.abc.dataserver.EMConsoleServer",
-            "romanow.abc.desktop.EMCabinet",
-            "romanow.abc.desktop.EMClient",
+            "romanow.abc.dataserver.PRSDataServer",
+            "romanow.abc.dataserver.PRSConsoleServer",
+            "romanow.abc.desktop.PRSCabinet",
+            "romanow.abc.desktop.PRSClient",
             "","",""};
     private  final static String EMAppNames[]={
-            "em",
-            "em",
-            "em",
-            "em",
-            "EM.apk",
-            "EMDataserver.jar",
+            "prs",
+            "prs",
+            "prs",
+            "prs",
+            "PRS.apk",
+            "PRSDataserver.jar",
             "romanow.abc.desktop.module",
             "/drawable/lecture.png",
             "БРС-НГТУ-ВТ"
@@ -100,6 +100,9 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Оценка", SAPoint.class));
         EntityFactory.put(new TableItem("Занятие", SAEvent.class));
         EntityFactory.put(new TableItem("Посещение", SAVisit.class));
+        EntityFactory.put(new TableItem("Бригада", SATeam.class));
+        EntityFactory.put(new TableItem("Разрешения", SAPermission.class));
+        EntityFactory.put(new TableItem("Преподаватель", SATeacher.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
         PrefixMap.put("SAMessage.sendTime","s");
         PrefixMap.put("SAExamTaking.startTime","s");
@@ -136,7 +139,7 @@ public class Values extends ValuesBase {
     public final static int UnitTesting= 5;
     @CONST(group = "EduUnit", title = "РГР(З)")
     public final static int UnitPersonalTask= 6;
-    @CONST(group = "EduUnit", title = "Защита")
+    @CONST(group = "EduUnit", title = "Защита л.р.")
     public final static int UnitDefence= 7;
     @CONST(group = "EduUnit", title = "Экзамен")
     public final static int UnitExam= 8;
@@ -153,9 +156,9 @@ public class Values extends ValuesBase {
     public final static int QualityСomplexity=3;
     @CONST(group = "QualityType", title = "Полнота")
     public final static int QualityСompleteness=4;
-    @CONST(group = "QualityType", title = "Вериф./Ошибки")
+    @CONST(group = "QualityType", title = ".../Ошибки")
     public final static int QualityErrors=5;
-    //-------------- Сосояние оценки ------------------------------------------------------
+    //-------------- Состояние оценки ------------------------------------------------------
     @CONST(group = "PointState", title = "Не выдано")
     public final static int PSNotIssued= 0;
     @CONST(group = "PointState", title = "Выдано")
@@ -170,6 +173,8 @@ public class Values extends ValuesBase {
     public final static int PSReturned= 5;
     @CONST(group = "PointState", title = "Плагиат")
     public final static int PSPlagiarism= 6;
+    @CONST(group = "PointState", title = "Архивная")        // Предыдущая оценка
+    public final static int PSArchive= 7;
     //------------- Состояние студента  -----------------------------------------------------
     @CONST(group = "Student", title = "Не определен")
     public final static int StudentStateUndefined = 0;

@@ -11,5 +11,6 @@ public class SAGroupRating extends SANamedEntity {
     @Getter private EntityLink<SASemesterRule> semRule = new EntityLink<>(SASemesterRule.class);    // Регламент семестра
     @Getter private EntityRefList<SAStudRating> ratings = new EntityRefList<>(SAStudRating.class);  // Рейтинги студентов
     @Getter private EntityRefList<SAEvent> events = new EntityRefList<>(SAEvent.class);             // Мероприятия (события)
+    @Getter private EntityRefList<SATeam> teams = new EntityRefList<>(SATeam.class);                // Бригады
     public SAGroupRating(){}
     }
