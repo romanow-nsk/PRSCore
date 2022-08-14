@@ -6,7 +6,7 @@ import romanow.abc.core.entity.EntityLink;
 import romanow.abc.core.entity.EntityLinkList;
 
 public class SAExamRule extends SANamedEntity {
-    @Getter private EntityLink<SADiscipline> EMDiscipline = new EntityLink<>();                 // Обратная ссылка
+    @Getter private EntityLink<SADiscipline> SADiscipline = new EntityLink<>();                 // Обратная ссылка
     @Getter private EntityLinkList<SATheme> themes = new EntityLinkList<>(SATheme.class);
     @Getter @Setter private int minimalRating=30;               // Рейтинг для допуска
     @Getter @Setter private int examOwnRating=40;               // Собственный рейтинг экзамена/зачета

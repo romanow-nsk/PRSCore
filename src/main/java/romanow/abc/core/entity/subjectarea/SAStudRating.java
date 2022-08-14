@@ -8,8 +8,8 @@ import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.StateEntity;
 
 public class SAStudRating extends StateEntity {
-    @Getter private EntityLink<SAGroupRating> EMGroupRating = new EntityLink<>();           // Обратная ссылка
-    @Getter private EntityLink<SAExamTaking> EMExamTaking = new EntityLink<>();             // Обратная ссылка (последний)
+    @Getter private EntityLink<SAGroupRating> SAGroupRating = new EntityLink<>();           // Обратная ссылка
+    @Getter private EntityLink<SAExamTaking> SAExamTaking = new EntityLink<>();             // Обратная ссылка (последний)
     @Getter private EntityLink<SAStudent> student = new EntityLink<>(SAStudent.class);      // Студент
     @Getter @Setter int semesterRating=0;
     @Getter @Setter int questionRating=0;

@@ -7,7 +7,7 @@ import romanow.abc.core.entity.EntityRefList;
 
 public class SATheme extends SANamedEntity {
     @Getter private transient ErrorList errorList = new ErrorList();
-    @Getter private EntityLink<SADiscipline> EMDiscipline = new EntityLink<>();               // Обратная ссылка
+    @Getter private EntityLink<SADiscipline> SADiscipline = new EntityLink<>();               // Обратная ссылка
     @Getter private EntityRefList<SATask> tasks = new EntityRefList<>(SATask.class);
     public SATheme(){}
 }

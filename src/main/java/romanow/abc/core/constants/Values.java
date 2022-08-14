@@ -119,11 +119,11 @@ public class Values extends ValuesBase {
        }
     //------------- Типы пользователей -----------------------------------------------------
     @CONST(group = "User", title = "Тьютор")
-    public final static int UserEMTutor = 3;
+    public final static int UserTutor = 3;
     @CONST(group = "User", title = "Преподаватель")
-    public final static int UserEMTeacher = 4;
+    public final static int UserTeacher = 4;
     @CONST(group = "User", title = "Студент")
-    public final static int UserEMStudent = 5;
+    public final static int UserStudent = 5;
     //------------- Вид занятия (учебной единицы)  -----------------------------------------------------
     @CONST(group = "EduUnit", title = "Не определен")
     public final static int UnitUndefined = 0;

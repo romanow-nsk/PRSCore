@@ -9,7 +9,7 @@ import romanow.abc.core.entity.artifacts.Artifact;
 
 public class SATask extends SANamedEntity {
     @Getter private transient ErrorList errorList = new ErrorList();
-    @Getter private EntityLink<SATheme> EMTheme = new EntityLink<>();  // Обратная ссылка
+    @Getter private EntityLink<SATheme> SATheme = new EntityLink<>();  // Обратная ссылка
     @Getter @Setter private String taskText="";
     @Getter @Setter private int type= Values.TaskUndefined;
     @Getter @Setter private int ownRating= 0;                        // Собственный рейтинговый балл
