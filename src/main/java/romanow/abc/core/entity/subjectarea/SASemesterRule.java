@@ -11,7 +11,7 @@ public class SASemesterRule extends SANamedEntity{      // Параметры р
     //----------------------------------------------------------------------------------------------
     @Getter @Setter private boolean fineOverDate=false; // Штраф за нарушение срока сдачи
     @Getter @Setter private int overDateWeeks=5;        // Кол-во недель снижения
-    @Getter @Setter private int overDatePercent=50;    // Полный процент снижения
+    @Getter @Setter private int overDatePercent=50;     // Полный процент снижения
     //----------------------------------------------------------------------------------------------
     @Getter @Setter private boolean fineOverSemester=false; // Штраф за сдачу вне семестра
     @Getter @Setter private int overSemesterPercent=50;     // Процент штрафа за сдачу вне семестра (долг)
