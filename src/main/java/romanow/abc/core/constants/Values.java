@@ -101,7 +101,6 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Занятие", SAEvent.class));
         EntityFactory.put(new TableItem("Посещение", SAVisit.class));
         EntityFactory.put(new TableItem("Бригада", SATeam.class));
-        EntityFactory.put(new TableItem("Разрешения", SAPermission.class));
         EntityFactory.put(new TableItem("Преподаватель", SATeacher.class));
         HashMap<String,String> PrefixMap = getPrefixMap();
         PrefixMap.put("SAMessage.sendTime","s");
