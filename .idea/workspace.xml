@@ -2,14 +2,18 @@
 <project version="4">
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
-      <artifact name="EMCore:jar" />
+      <artifact name="PRSCore:jar" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="89a8c7ee-ce9d-48b7-a8a2-859f841fd4cf" name="Default Changelist" comment="2.0.18 БОМ-БОМ" />
+    <list default="true" id="89a8c7ee-ce9d-48b7-a8a2-859f841fd4cf" name="Default Changelist" comment="2.0.18 БОМ-БОМ">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -53,16 +57,16 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="romanow.EM" />
+      <recent name="romanow.PRS" />
     </key>
   </component>
   <component name="RunManager" selected="Application.FFTAudioTextFile">
     <configuration name="FFTAudioTextFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.EM.FFTAudioTextFile" />
-      <module name="EMCore" />
+      <option name="MAIN_CLASS_NAME" value="romanow.PRS.FFTAudioTextFile" />
+      <module name="PRSCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="romanow.EM.*" />
+          <option name="PATTERN" value="romanow.PRS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -71,11 +75,11 @@
       </method>
     </configuration>
     <configuration name="FileDescription" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.EM.FileDescription" />
-      <module name="EMCore" />
+      <option name="MAIN_CLASS_NAME" value="romanow.PRS.FileDescription" />
+      <module name="PRSCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="romanow.EM.*" />
+          <option name="PATTERN" value="romanow.PRS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -84,11 +88,11 @@
       </method>
     </configuration>
     <configuration name="SqeezyWaveData" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="romanow.EM.SqeezyWaveData" />
-      <module name="EMCore" />
+      <option name="MAIN_CLASS_NAME" value="romanow.PRS.SqeezyWaveData" />
+      <module name="PRSCore" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="romanow.EM.*" />
+          <option name="PATTERN" value="romanow.PRS.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,11 +129,10 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
-      <path value="$PROJECT_DIR$/../EMCommon" />
+      <path value="$PROJECT_DIR$/../PRSCommon" />
     </ignored-roots>
     <option name="LAST_COMMIT_MESSAGE" value="Fix0" />
   </component>

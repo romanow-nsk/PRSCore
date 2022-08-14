@@ -9,10 +9,11 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ABCCore" />
         <module name="EMCore" />
+        <module name="PRSCore" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="LEP500Common" target="1.8" />
+      <module name="PRCCore" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
