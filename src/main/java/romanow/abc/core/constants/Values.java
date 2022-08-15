@@ -106,7 +106,7 @@ public class Values extends ValuesBase {
         PrefixMap.put("SAMessage.sendTime","s");
         PrefixMap.put("SAExamTaking.startTime","s");
         PrefixMap.put("SAExamTaking.endTime","e");
-        PrefixMap.put("SASemesterRule.beginTime","b");
+        PrefixMap.put("SASemesterRule.smstrDate","b");
         PrefixMap.put("SAPoint.date","d");
         PrefixMap.put("SAEvent.date","d");
         PrefixMap.put("SAVisit.date","d");

@@ -13,6 +13,7 @@ public class SADiscipline extends SANamedEntity {
         ratings.createMap();
         rules.createMap();
         themes.createMap();
+        units.createMap();
         }
     public SADiscipline(){}
 }

@@ -16,4 +16,9 @@ public class SAEduUnit extends SANamedEntity{                   // Учебна�
         this.unitType = unitType;
         manualPointSet = unitType!=Values.UnitLabWork;         // Автоматическая установка только для Л.Р.
         }
+    @Override
+    public int getKeyNum() {
+        return orderNum;
+        }
+    public SAEduUnit(){}
 }
