@@ -8,6 +8,7 @@ public class SADiscipline extends SANamedEntity {
     @Getter private EntityRefList<SAExamRule> rules = new EntityRefList<>(SAExamRule.class);
     @Getter private EntityRefList<SAGroupRating> ratings = new EntityRefList<>(SAGroupRating.class);
     @Getter private EntityRefList<SAExamTaking> takings = new EntityRefList<>(SAExamTaking.class);
+    @Getter private EntityRefList<SAEduUnit> units = new EntityRefList<>(SAEduUnit.class);
     public void createMaps(){
         ratings.createMap();
         rules.createMap();
