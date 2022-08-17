@@ -8,9 +8,10 @@ import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.utils.OwnDateTime;
 
 public class SAPoint extends SAEntity {             // Оценка
-    @Getter @Setter EntityLink<SAGroupRating> rating = new EntityLink<>();      // рейтинг группы
-    @Getter @Setter EntityLink<SAStudent> student = new EntityLink<>();         // студент
-    @Getter @Setter EntityLink<SAEduUnit> eduUnit = new EntityLink<>();         // учебная единица
+    @Getter private EntityLink<SAStudRating> SAStudRating = new EntityLink<>(); // Обратная ссылка
+    @Getter private EntityLink<SAGroupRating> rating = new EntityLink<>();      // рейтинг группы
+    @Getter private EntityLink<SAStudent> student = new EntityLink<>();         // студент
+    @Getter private EntityLink<SAEduUnit> eduUnit = new EntityLink<>();         // учебная единица
     @Getter @Setter double point=0;                 // Рассчитанный (выставленный) итоговый балл
     @Getter @Setter int quality=0;                  // Признаки качества (3-ая СС)
     @Getter @Setter int deliveryWeek=0;             // Неделя сдачи (0 - не в семестре)

@@ -11,6 +11,7 @@ public class SAStudRating extends StateEntity {
     @Getter private EntityLink<SAGroupRating> SAGroupRating = new EntityLink<>();           // Обратная ссылка
     @Getter private EntityLink<SAExamTaking> SAExamTaking = new EntityLink<>();             // Обратная ссылка (последний)
     @Getter private EntityLink<SAStudent> student = new EntityLink<>(SAStudent.class);      // Студент
+    @Getter private EntityRefList<SAPoint> points = new EntityRefList<>(SAPoint.class);     // Оценки
     @Getter @Setter int semesterRating=0;
     @Getter @Setter int questionRating=0;
     @Getter @Setter int excerciceRating=0;
