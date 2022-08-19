@@ -168,7 +168,7 @@ public class Values extends ValuesBase {
     @CONST(group = "PointState", title = "Принято")
     public final static int PSAccepted= 3;
     @CONST(group = "PointState", title = "Возвращено")
-    public final static int PSReturned= 5;
+    public final static int PSReturned= 4;
     @CONST(group = "PointState", title = "Плагиат")
     public final static int PSPlagiarism= 5;
     @CONST(group = "PointState", title = "Архив")        // Предыдущая оценка
@@ -280,7 +280,7 @@ public class Values extends ValuesBase {
         PointFactory.add(new Transition(PSOnExpection,PSReturned,"Вернуть (архив)","Return3"));
         PointFactory.add(new Transition(PSAccepted,PSReturned,"Вернуть","Return2"));
         PointFactory.add(new Transition(PSReturned,PSOnExpection,"На проверку","Retry"));
-        PointFactory.add(new Transition(PSOnExpection,PSNotIssued,"Плагиат","Plagiarism"));
+        PointFactory.add(new Transition(PSOnExpection,PSPlagiarism,"Плагиат","Plagiarism"));
         }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
