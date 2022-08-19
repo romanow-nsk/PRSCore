@@ -7,7 +7,7 @@ import romanow.abc.core.entity.EntityLinkList;
 import romanow.abc.core.entity.StateEntity;
 
 public class SAAnswer extends StateEntity {
-    @Getter EntityLink<SAStudRating> SAStudRating = new EntityLink<>();                 // Обратная ссылка
+    @Getter EntityLink<SAExamRating> SAExamRating = new EntityLink<>();                 // Обратная ссылка
     @Getter EntityLinkList<SAMessage> messages = new EntityLinkList<>(SAMessage.class); // Прямые ссылки
     @Getter EntityLink<SATask> task = new EntityLink<>(SATask.class);                   // Задание
     @Getter @Setter int rating=0;                                                       // Оценка

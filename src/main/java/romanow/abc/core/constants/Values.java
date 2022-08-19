@@ -95,7 +95,8 @@ public class Values extends ValuesBase {
         EntityFactory.put(new TableItem("Студент", SAStudent.class));
         EntityFactory.put(new TableItem("Задание", SATask.class));
         EntityFactory.put(new TableItem("Тема", SATheme.class));
-        EntityFactory.put(new TableItem("Рейтинг студента", SAStudRating.class));
+        EntityFactory.put(new TableItem("Рейтинг экзамена", SAExamRating.class));
+        EntityFactory.put(new TableItem("Рейтинг семестра", SASemesterRating.class));
         EntityFactory.put(new TableItem("Уч.единица", SAEduUnit.class));
         EntityFactory.put(new TableItem("Оценка", SAPoint.class));
         EntityFactory.put(new TableItem("Занятие", SAEvent.class));
@@ -164,16 +165,14 @@ public class Values extends ValuesBase {
     public final static int PSIssued= 1;
     @CONST(group = "PointState", title = "На проверке")
     public final static int PSOnExpection= 2;
-    @CONST(group = "PointState", title = "Обсуждение")
-    public final static int PSOnExpertise= 3;
     @CONST(group = "PointState", title = "Принято")
-    public final static int PSAccepted= 4;
+    public final static int PSAccepted= 3;
     @CONST(group = "PointState", title = "Возвращено")
     public final static int PSReturned= 5;
     @CONST(group = "PointState", title = "Плагиат")
-    public final static int PSPlagiarism= 6;
-    @CONST(group = "PointState", title = "Архивная")        // Предыдущая оценка
-    public final static int PSArchive= 7;
+    public final static int PSPlagiarism= 5;
+    @CONST(group = "PointState", title = "Архив")        // Предыдущая оценка
+    public final static int PSArchive= 6;
     //------------- Состояние студента  -----------------------------------------------------
     @CONST(group = "Student", title = "Не определен")
     public final static int StudentStateUndefined = 0;
@@ -238,7 +237,7 @@ public class Values extends ValuesBase {
     @CONST(group = "Task", title = "Задача")
     public final static int TaskExercise = 2;
     //------------------------------------------------------------------------------------------
-    public final static TransitionsFactory TakingFactory = new TransitionsFactory("EMExamTaking");
+    public final static TransitionsFactory TakingFactory = new TransitionsFactory("SAExamTaking");
     static {
         TakingFactory.add(new Transition(TakingEdit,TakingReady,"Закончить редакт.","EndEdit"));
         TakingFactory.add(new Transition(TakingReady,TakingTimeIsSet,"Назначить время","TimeSet"));
@@ -248,7 +247,7 @@ public class Values extends ValuesBase {
         TakingFactory.add(new Transition(TakingAnswerCheck,TakingInProcess,"Продолжить прием","Continue"));
         TakingFactory.add(new Transition(TakingAnswerCheck,TakingClosed,"Закончить экзамен","Close"));
         }
-    public final static TransitionsFactory StudRatingFactory = new TransitionsFactory("EMStudRating");
+    public final static TransitionsFactory StudRatingFactory = new TransitionsFactory("SAExamRating");
     static  {
         StudRatingFactory.add(new Transition(StudRatingNotAllowed,StudRatingAllowed,"Допустить к сдаче","Allow"));
         StudRatingFactory.add(new Transition(StudRatingAllowed,StudRatingTakingSet,"Назначить прием","TakingSet"));
@@ -262,7 +261,7 @@ public class Values extends ValuesBase {
         StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingOnExam,"Доделать","Retry"));
         StudRatingFactory.add(new Transition(StudRatingGotRating,StudRatingAllowed,"Пересдача","NewTaking"));
         }
-    public final static TransitionsFactory AnswerFactory = new TransitionsFactory("EMAnswer");
+    public final static TransitionsFactory AnswerFactory = new TransitionsFactory("SAAnswer");
     static  {
         AnswerFactory.add(new Transition(AnswerNoAck,AnswerInProcess,"Начать ответ","Start"));
         AnswerFactory.add(new Transition(AnswerInProcess,AnswerDone,"Проверить (студ)","SendStud"));
@@ -272,11 +271,23 @@ public class Values extends ValuesBase {
         AnswerFactory.add(new Transition(AnswerRatingIsSet,AnswerInProcess,"Вернуть","Retry"));
         AnswerFactory.add(new Transition(AnswerCheck,AnswerInProcess,"Вернуть","Retry2"));
         }
+    public final static TransitionsFactory PointFactory = new TransitionsFactory("SAPoint");
+    static  {
+        PointFactory.add(new Transition(PSNotIssued,PSIssued,"Выдать задание","Issue"));
+        PointFactory.add(new Transition(PSIssued,PSOnExpection,"На проверку","Expect"));
+        PointFactory.add(new Transition(PSOnExpection,PSAccepted,"Принять","Accept"));
+        PointFactory.add(new Transition(PSOnExpection,PSReturned,"Вернуть","Return"));
+        PointFactory.add(new Transition(PSOnExpection,PSReturned,"Вернуть (архив)","Return3"));
+        PointFactory.add(new Transition(PSAccepted,PSReturned,"Вернуть","Return2"));
+        PointFactory.add(new Transition(PSReturned,PSOnExpection,"На проверку","Retry"));
+        PointFactory.add(new Transition(PSOnExpection,PSNotIssued,"Плагиат","Plagiarism"));
+        }
     public final static HashMap<String,TransitionsFactory> stateFactoryMap = new HashMap<>();
     static  {
             stateFactoryMap.put(TakingFactory.name,TakingFactory);
             stateFactoryMap.put(StudRatingFactory.name,StudRatingFactory);
             stateFactoryMap.put(AnswerFactory.name,AnswerFactory);
+            stateFactoryMap.put(PointFactory.name,PointFactory);
             }
     //-------------------------------------------------------------------------------------------
     public static void main(String a[]){

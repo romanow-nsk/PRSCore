@@ -14,7 +14,7 @@ public class SAExamTaking extends StateEntity {
     @Getter EntityLink<SADiscipline> SADiscipline = new EntityLink<>();                     // Обратная ссылка
     @Getter @Setter boolean oneGroup=false;
     @Getter EntityLink<SAGroup> group = new EntityLink<>(SAGroup.class);                    // Группа, для которой прием - прямая ссылка
-    @Getter EntityRefList<SAStudRating> ratings = new EntityRefList<>(SAStudRating.class);  // Студенты, для которых прием - обратные ссылки
+    @Getter EntityRefList<SAExamRating> ratings = new EntityRefList<>(SAExamRating.class);  // Студенты, для которых прием - обратные ссылки
     public SAExamTaking(){}
     public String getTitle(){
         return  getName().length()==0 ? "..." : getName()+" "+getStartTime().dateTimeToString();

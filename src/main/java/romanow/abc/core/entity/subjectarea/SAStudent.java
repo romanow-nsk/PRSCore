@@ -15,7 +15,6 @@ public class SAStudent extends Entity {
     @Getter private EntityLink<SAGroup> SAGroup = new EntityLink<>();               // Обратная ссылка
     @Getter private EntityLink<User> User = new EntityLink<>(User.class);
     @Getter @Setter private int state = Values.StudentStateUndefined;
-    @Getter @Setter transient private HashMap<Long,SAPoint> pointsMap = null;
     public String getTitle(){
         return User.getTitle();
         }
