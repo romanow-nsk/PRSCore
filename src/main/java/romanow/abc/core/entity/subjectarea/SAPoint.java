@@ -2,9 +2,11 @@ package romanow.abc.core.entity.subjectarea;
 
 import lombok.Getter;
 import lombok.Setter;
+import romanow.abc.core.Utils;
 import romanow.abc.core.constants.ConstValue;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.entity.EntityLink;
+import romanow.abc.core.entity.EntityRefList;
 import romanow.abc.core.entity.StateEntity;
 import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.utils.OwnDateTime;
@@ -33,19 +35,29 @@ public class SAPoint extends StateEntity {             // Оценка
         SASemesterRating.setOid(srOid);
         setState(Values.PSNotIssued);
         }
-    public String setDeliveryWeekDate(OwnDateTime date2, SASemesterRule rule){
-        long tt1 = date2.timeInMS();
-        long tt2 = rule.getSmstrDate().timeInMS();
+    //-----------------------------------------------------
+    public static int weekDiff(OwnDateTime entDate, OwnDateTime startDate){
+        long tt1 = entDate.timeInMS();
+        long tt2 = startDate.timeInMS();
+        if (tt1==0 || tt2==0)
+            return 0;                       // Не определено
         if (tt1 < tt2)
+            return -1;
+        int week = (int)((tt1-tt2) / 1000 / 60 / 60/ 24 / 7);
+        return week;
+        }
+    //---------------------------------------------------------
+    public String setDeliveryWeekByDate(SASemesterRule rule){
+        int week = weekDiff(date,rule.getSmstrDate());
+        if (week==0)
+            return "Дата не определена";
+        if (week==-1)
             return "Дата сдачи до начала семестра";
-        long week = (tt1-tt2) / 1000 / 60 / 60/ 24 / 7;
         if (week >=rule.getSemesterDuration()) {
             deliveryWeek=-1;
-            date = date2;
             return "";
             }
         deliveryWeek = (int)(week+1);
-        date = date2;
         return "";
         }
     public String weekToString(){
@@ -82,5 +94,32 @@ public class SAPoint extends StateEntity {             // Оценка
                 }
             }
         return out;
-    }
+        }
+    public double calcPointValue(SAEduUnit unit, SASemesterRule rule) {
+        if (unit.isManualPointSet())
+            return point;
+        if (getState()!=Values.PSAccepted)
+            return 0;
+        double val = unit.getBasePoint();
+        double qual =  val*calcQuality()*rule.getQualProc()/100.;
+        if (rule.isFineOverSemester()){
+            if (deliveryWeek==0 || deliveryWeek==-1 || deliveryWeek>rule.getSemesterDuration())
+                val -= val * rule.getOverSemesterPercent()/100.;
+            }
+        if (rule.isFineOverDate() && unit.getDeliveryWeek()!=0){
+            int week=rule.getSemesterDuration()+100;
+            if (deliveryWeek>0)
+                week = deliveryWeek;
+            int diff = week-unit.getDeliveryWeek();
+            int overWeeks = rule.getOverDateWeeks();
+            if (diff>overWeeks)
+                diff=overWeeks;
+            val -= val * rule.getOverDatePercent()/100.*diff/overWeeks;
+            }
+        point = val + qual;
+        return point;
+        }
+    public void setDateByWeek(SASemesterRule rule){
+        date = new OwnDateTime(rule.getSmstrDate().timeInMS()+deliveryWeek*7L*24*60*60*1000);
+        }
 }
