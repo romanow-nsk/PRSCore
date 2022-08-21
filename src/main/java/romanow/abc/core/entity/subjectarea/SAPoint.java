@@ -35,6 +35,11 @@ public class SAPoint extends StateEntity {             // Оценка
         SASemesterRating.setOid(srOid);
         setState(Values.PSNotIssued);
         }
+    //----------------------------------------------------
+    @Override
+    public long getKeyNum() {           // Для поиска по уч.единицам сданным
+        return getState()!=Values.PSAccepted ? 0 : eduUnit.getOid();
+        }
     //-----------------------------------------------------
     public static int weekDiff(OwnDateTime entDate, OwnDateTime startDate){
         long tt1 = entDate.timeInMS();
@@ -121,5 +126,30 @@ public class SAPoint extends StateEntity {             // Оценка
         }
     public void setDateByWeek(SASemesterRule rule){
         date = new OwnDateTime(rule.getSmstrDate().timeInMS()+deliveryWeek*7L*24*60*60*1000);
+        }
+    public static String pointNote(int  x){
+        if (x==0) return "--";
+        if (x < 50) return "2";
+        if (x < 73) return "3";
+        if (x < 87) return "4";
+        return "5";
+        }
+    public static String ECTS(int x){
+        if (x==0) return "";
+        if (x >= 98) return "A+";
+        if (x >= 93) return "A";
+        if (x >= 90) return "A-";
+        if (x >= 87) return "B+";
+        if (x >= 83) return "B";
+        if (x >= 80) return "B-";
+        if (x >= 77) return "C+";
+        if (x >= 73) return "C";
+        if (x >= 70) return "C-";
+        if (x >= 67) return "D+";
+        if (x >= 63) return "D";
+        if (x >= 60) return "D-";
+        if (x >= 50) return "E";
+        if (x >= 25) return"FX";
+        return "F";
         }
 }

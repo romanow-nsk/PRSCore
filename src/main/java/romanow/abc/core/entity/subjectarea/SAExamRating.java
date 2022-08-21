@@ -15,9 +15,16 @@ public class SAExamRating extends StateEntity {
     @Getter @Setter int questionRating=0;
     @Getter @Setter int excerciceRating=0;
     @Getter private EntityRefList<SAAnswer> answers = new EntityRefList<>(SAAnswer.class);  // Ответы
+    public int getExamRating(){
+        return questionRating + excerciceRating;
+        }
     public SAExamRating(){}
     public boolean enableToRemove(){
         int state = getState();
         return state==Values.StudRatingUndefined || state==Values.StudRatingNotAllowed || state==Values.StudRatingAllowed;
-    }
+        }
+    @Override
+    public long getKeyNum() {
+        return student.getOid();
+        }
 }

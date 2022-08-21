@@ -12,7 +12,15 @@ public class SASemesterRating extends StateEntity {
     @Getter private EntityLink<SAGroupRating> SAGroupRating = new EntityLink<>();           // Обратная ссылка
     @Getter private EntityLink<SAStudent> student = new EntityLink<>(SAStudent.class);      // Студент
     @Getter private EntityRefList<SAPoint> points = new EntityRefList<>(SAPoint.class);     // Оценки
+    @Getter private EntityLink<SATeam> team = new EntityLink<>(SATeam.class);               // Бригада
     @Getter @Setter int semesterRating=0;
+    public void createMap(){
+        points.createMap();
+        }
+    @Override
+    public long getKeyNum() {
+        return student.getOid();
+        }
     public int calcSemesterRating(EntityRefList<SAEduUnit> units, SASemesterRule rule) throws UniException {
         semesterRating=0;
         double sum=0;

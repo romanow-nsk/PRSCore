@@ -124,6 +124,13 @@ public class Values extends ValuesBase {
     public final static int UserTeacher = 4;
     @CONST(group = "User", title = "Студент")
     public final static int UserStudent = 5;
+    //----------------------- Отчеты  ---------------------------------------------
+    @CONST(group = "Report", title = "Рейтинг группы")
+    public final static int RepGroup = 1;
+    @CONST(group = "Report", title = "Рейтинг студента")
+    public final static int RepStudent = 2;
+    @CONST(group = "Report", title = "Рейтинг уч.единицы")
+    public final static int RepEduUnit = 3;
     //------------- Вид занятия (учебной единицы)  -----------------------------------------------------
     @CONST(group = "EduUnit", title = "Не определен")
     public final static int UnitUndefined = 0;

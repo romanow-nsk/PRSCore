@@ -5,6 +5,7 @@ import romanow.abc.core.entity.baseentityes.*;
 import romanow.abc.core.entity.subjectarea.*;
 import retrofit2.Call;
 import retrofit2.http.*;
+import romanow.abc.core.reports.GroupRatingReport;
 
 public interface RestAPI {
     //==================================  API ПРЕДМЕТНОЙ ОБЛАСТИ =======================================================
@@ -26,4 +27,7 @@ public interface RestAPI {
     /** Получить тикеты студентов для приема */
     @POST("/api/rating/takingforall")
     Call<JInt> setTakingForAll(@Header("SessionToken") String token, @Query("takingId") long takingId);
+    /** По рейтингу группы */
+    @GET("/api/report/rating/group")
+    Call<GroupRatingReport> createPaymentReport4(@Header("SessionToken") String token, @Query("ratingId") long ratingId, @Query("filetype") int filetype);
 }
