@@ -1,11 +1,13 @@
 package romanow.abc.core.API;
 
 import romanow.abc.core.DBRequest;
+import romanow.abc.core.entity.artifacts.Artifact;
 import romanow.abc.core.entity.baseentityes.*;
 import romanow.abc.core.entity.subjectarea.*;
 import retrofit2.Call;
 import retrofit2.http.*;
 import romanow.abc.core.reports.GroupRatingReport;
+import romanow.abc.core.reports.TableData;
 
 public interface RestAPI {
     //==================================  API ПРЕДМЕТНОЙ ОБЛАСТИ =======================================================
@@ -28,6 +30,8 @@ public interface RestAPI {
     @POST("/api/rating/takingforall")
     Call<JInt> setTakingForAll(@Header("SessionToken") String token, @Query("takingId") long takingId);
     /** По рейтингу группы */
-    @GET("/api/report/rating/group")
-    Call<GroupRatingReport> createPaymentReport4(@Header("SessionToken") String token, @Query("ratingId") long ratingId, @Query("filetype") int filetype);
+    @GET("/api/report/group/artifact")
+    Call<Artifact> createGroupReportArtifact(@Header("SessionToken") String token, @Query("ratingId") long ratingId, @Query("filetype") int filetype);
+    @GET("/api/report/group/table")
+    Call<TableData> createGroupReportTable(@Header("SessionToken") String token, @Query("ratingId") long ratingId);
 }

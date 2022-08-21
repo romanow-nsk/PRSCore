@@ -1,5 +1,6 @@
 package romanow.abc.core.reports;
 
+import lombok.Getter;
 import romanow.abc.core.UniException;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.constants.ValuesBase;
@@ -69,7 +70,7 @@ public class GroupRatingReport extends ReportBase {
             table.setCellValue(i,5,SAPoint.ECTS(sum));
             table.setCellValue(i,6,SAPoint.pointNote(sum));
             SATeam team = rating.getTeams().getById(semesterRating.getTeam().getOid());
-            table.setCellValue(i,6,team==null ? "" : team.getName());
+            table.setCellValue(i,7,team==null ? "" : team.getName());
             for(int j=0;j<discipline.getUnits().size();j++){
                 SAEduUnit eduUnit = discipline.getUnits().get(j);
                 SAPoint point = semesterRating.getPoints().getByNumber(eduUnit.getOid());
