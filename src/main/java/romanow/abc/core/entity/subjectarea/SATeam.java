@@ -11,4 +11,5 @@ public class SATeam extends SANamedEntity{
     @Getter private EntityLink<SAGroupRating> SAGroupRating = new EntityLink<>(); // Обратная ссылка
     @Getter @Setter int teamNum=0;                                                // Номер бригады
     @Getter private EntityLinkList<SAStudent> students = new EntityLinkList<>();  // Студенты
+    public SATeam(){}
     }

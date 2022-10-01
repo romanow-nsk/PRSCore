@@ -16,12 +16,11 @@ public class Values extends ValuesBase {
     private Values(){
         super();
         System.out.println("Инициализация Values");
-        initEnvTwo();
-        getConstMap().createConstList(this);
         }
     public final static Values init(){
         if (two == null){
             two = new Values();
+            two.afterInit();
             setOne(two);
             }
         return two;
@@ -54,34 +53,50 @@ public class Values extends ValuesBase {
             "/drawable/lecture.png",
             "БРС-НГТУ-ВТ"
             };
-    private void initEnvTwo(){
+    @Override
+    protected void initEnv() {
+        super.initEnv();
         I_Environment env = new I_Environment() {
             @Override
             public String applicationClassName(int classType) {
                 return EMClassNames[classType];
-                }
+            }
+
             @Override
             public String applicationName(int nameNype) {
                 return EMAppNames[nameNype];
             }
+
             @Override
             public User superUser() {
                 return superUser;
-                }
+            }
+
             @Override
             public Class applicationClass(int classType) throws UniException {
-                return createApplicationClass(classType,EMClassNames);
-                }
+                return createApplicationClass(classType, EMClassNames);
+            }
+
             @Override
             public Object applicationObject(int classType) throws UniException {
-                return createApplicationObject(classType,EMClassNames);
-                }
+                return createApplicationObject(classType, EMClassNames);
+            }
+
             @Override
-            public int releaseNumber() { return EMReleaseNumber; }
+            public int releaseNumber() {
+                return EMReleaseNumber;
+            }
+
             @Override
-            public WorkSettingsBase currentWorkSettings() { return new WorkSettings(); }
-            };
+            public WorkSettingsBase currentWorkSettings() {
+                return new WorkSettings();
+            }
+        };
         setEnv(env);
+        }
+    @Override
+    protected void initTables(){
+        super.initTables();
         EntityIndexedFactory EntityFactory = getEntityFactory();
         EntityFactory.put(new TableItem("Настройки", WorkSettings.class));
         EntityFactory.put(new TableItem("Ответ", SAAnswer.class));
