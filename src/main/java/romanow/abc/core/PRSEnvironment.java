@@ -1,5 +1,6 @@
 package romanow.abc.core;
 
+import romanow.abc.core.API.RestAPI;
 import romanow.abc.core.API.RestAPIBase;
 import romanow.abc.core.constants.Values;
 import romanow.abc.core.mongo.DAO;
@@ -13,7 +14,7 @@ public class PRSEnvironment {
         Values.init();
         ErrorList errorList = new ErrorList();
         KotlinJSConverter.createKotlinClassSources(errorList);
-        System.out.println(KotlinJSConverter.createJSAPIFace(RestAPIBase.class,errorList));
+        KotlinJSConverter.createJSAPIFile(RestAPI.class,errorList);
         System.out.println(errorList.toString());
         }
     }
