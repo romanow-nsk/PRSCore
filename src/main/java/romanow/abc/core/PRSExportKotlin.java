@@ -10,23 +10,16 @@ import java.io.OutputStreamWriter;
 
 public class PRSExportKotlin {
     //------------------------------------------------------------------------------------------------------------------
+    public static void exportKotlin(String path){
+        if (path.length()!=0)
+            path+="/";
+        ErrorList errorList = new ErrorList();
+        ExportKotlin.createKotlinClassSources(path,errorList);
+        ExportKotlin.createJSAPIFile(path,RestAPI.class, errorList);
+        ExportKotlin.exrortKotlinErrors(path,errorList);
+        }
     public static void main(String aa[]) {
         Values.init();
-        ErrorList errorList = new ErrorList();
-        ExportKotlin.createKotlinClassSources(errorList);
-        ExportKotlin.createJSAPIFile(RestAPI.class, errorList);
-        try {
-            System.out.println(errorList.toString());
-            File ff = new File("ExportKotlinErrors.kt");
-            ff.delete();
-            if (errorList.valid())
-                return;
-            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream("ExportKotlinErrors.kt"), "UTF-8");
-            out.write(errorList.toString());
-            out.flush();
-            out.close();
-        } catch (Exception ee) {
-            System.out.println("ExportKotlinErrors.kt: " + ee.toString());
-            }
+        PRSExportKotlin.exportKotlin("f:/temp");
         }
     }
